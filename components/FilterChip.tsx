@@ -1,21 +1,25 @@
+import { Ionicons } from "@expo/vector-icons";
+import { ComponentProps } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Colors } from "../constants/colors";
 import { Fonts } from "../constants/fonts";
 import { Sizing } from "../constants/sizing";
 import { Spacing } from "../constants/spacing";
 import { Typography } from "../constants/typography";
-import { Ionicons } from "@expo/vector-icons";
 
 // allow different labels
 type FilterChipProps = {
   label: string;
-  icon: string;
+  icon?: ComponentProps<typeof Ionicons>["name"];
+  selected?: boolean;
 };
 
-export default function FilterChip({ label, icon }: FilterChipProps) {
+export default function FilterChip({ label, icon, selected }: FilterChipProps) {
   return (
-    <View style={styles.label}>
-      <Ionicons name={icon} size={Sizing.iconMed} color={Colors.black} />
+    <View style={[styles.label, selected && styles.selected]}>
+      {icon ? (
+        <Ionicons name={icon} size={Sizing.iconMed} color={Colors.black} />
+      ) : null}
       <Text style={styles.buttonText}>{label}</Text>
     </View>
   );
@@ -33,6 +37,11 @@ const styles = StyleSheet.create({
     borderColor: Colors.border,
     alignItems: "center",
     justifyContent: "center",
+  },
+
+  selected: {
+    backgroundColor: Colors.primary,
+    borderColor: Colors.primary,
   },
 
   buttonText: {

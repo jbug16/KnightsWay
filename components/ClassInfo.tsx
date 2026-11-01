@@ -8,7 +8,11 @@ import { Typography } from "../constants/typography";
 import { Sizing } from "../constants/sizing";
 import Tag from "./Tag";
 
-export default function ClassInfo() {
+type ClassInfoProps = {
+  showTag?: boolean;
+};
+
+export default function ClassInfo({ showTag = true }: ClassInfoProps) {
   return (
     <View style={styles.container}>
       // icon
@@ -20,7 +24,7 @@ export default function ClassInfo() {
         <View style={styles.classHeader}>
           <Text style={styles.classCode}>COP 3503</Text>
             // time left til class label
-          <Tag />
+          {showTag ? <Tag /> : null}
         </View>
         // location
         <View style={styles.label}>

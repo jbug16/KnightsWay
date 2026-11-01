@@ -1,4 +1,5 @@
 import { StyleSheet, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 // My custom components
 import CampusMap from "../../components/CampusMap";
@@ -9,7 +10,9 @@ import { Spacing } from "../../constants/spacing";
 
 export default function Index() {
   return (
-    <View style={styles.container}>
+    // safe area let's me hide the weird android nav top and not overlap my titles
+    // with the phone information and camera 
+    <SafeAreaView style={styles.container} edges={["top"]}>
       <View style={styles.header}>
         <SearchBar />
       </View>
@@ -28,7 +31,7 @@ export default function Index() {
       <View style={styles.cardContainer}>
         <NextClassCard />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

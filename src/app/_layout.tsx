@@ -46,6 +46,8 @@ export default function RootLayout() {
           fontFamily: Fonts.semibold,
           fontSize: Typography.caption,
         },
+
+        headerShown: false,
       }}
     >
       // Home screen
