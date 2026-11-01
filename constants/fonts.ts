@@ -1,9 +1,6 @@
 export const Fonts = {
-  regular: "Montserrat_400Regular",
-  medium: "Montserrat_500Medium",
-  semibold: "Montserrat_600SemiBold",
-  bold: "Montserrat_700Bold",
-
-  heading: "Oswald_600SemiBold",
-  headingBold: "Oswald_700Bold",
+  regular: "Inter_400Regular",
+  medium: "Inter_500Medium",
+  semibold: "Inter_600SemiBold",
+  bold: "Inter_700Bold",
 };

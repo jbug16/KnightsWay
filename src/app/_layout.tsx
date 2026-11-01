@@ -4,11 +4,30 @@ import { Colors } from "../../constants/colors";
 import { Fonts } from "../../constants/fonts";
 import { Typography } from "../../constants/typography";
 
+// fonts
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_600SemiBold,
+  Inter_700Bold,
+} from "@expo-google-fonts/inter";
+import { useFonts } from "expo-font";
+
 // This is the file that does the nav bar
 // Using the tabs it creates a bar at the bottom of the screen
 // It also links the files in the same folder here to the buttons
 // WAY EASIER THAN XML!!!
 export default function RootLayout() {
+  // font stuff
+  const [fontsLoaded] = useFonts({
+    Inter_400Regular,
+    Inter_500Medium,
+    Inter_600SemiBold,
+    Inter_700Bold,
+  });
+  if (!fontsLoaded) return null;
+
+  // navbar
   return (
     <Tabs
       screenOptions={{

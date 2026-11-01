@@ -1,9 +1,33 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+
+// My custom components
+import CampusMap from "../../components/CampusMap";
+import FilterChip from "../../components/FilterChip";
+import NextClassCard from "../../components/NextClassCard";
+import SearchBar from "../../components/SearchBar";
+import { Spacing } from "../../constants/spacing";
 
 export default function Index() {
   return (
     <View style={styles.container}>
-      <Text>This is the home screen</Text>
+      <View style={styles.header}>
+        <SearchBar />
+      </View>
+
+      <View style={styles.filterContainer}>
+        <FilterChip label="Classes" icon="school" />
+        <FilterChip label="Parking" icon="car" />
+        <FilterChip label="Buildings" icon="home" />
+        <FilterChip label="Bus Stops" icon="bus" />
+      </View>
+
+      <View style={styles.mapContainer}>
+        <CampusMap />
+      </View>
+
+      <View style={styles.cardContainer}>
+        <NextClassCard />
+      </View>
     </View>
   );
 }
@@ -11,7 +35,23 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
+
+  header: {
+    padding: Spacing.sm,
+  },
+
+  filterContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: Spacing.xs,
+    paddingHorizontal: Spacing.sm,
+    paddingBottom: Spacing.sm,
+  },
+
+  mapContainer: {
+    flex: 1,
+  },
+
+  cardContainer: {},
 });

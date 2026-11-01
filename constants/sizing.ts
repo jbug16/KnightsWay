@@ -1,11 +1,16 @@
 export const Sizing = {
-  buttonHeight: 48,
+  buttonHeight: 40,
   inputHeight: 48,
-  icon: 24,
-  iconSmall: 20,
-  touchTarget: 48,
+  iconSmall: 18,
+  iconMed: 24,
+  iconLarge: 48,
+  iconBackground: 64,
 
   radiusSmall: 4,
   radiusMedium: 8,
   radiusLarge: 12,
+
+  borderThin: 1,
+  borderMedium: 2,
+  borderThick: 3,
 };
