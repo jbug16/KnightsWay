@@ -1,4 +1,3 @@
-
 import * as SQLite from 'expo-sqlite';
 
 export async function initializeDatabase() {
@@ -7,24 +6,28 @@ export async function initializeDatabase() {
     // enable foreign key enforcement
     await db.execAsync('PRAGMA foreign_keys = ON;');
 
+    // CLASSES
+    // stores the classes the student is taking
+    await db.execAsync(`
+        CREATE TABLE IF NOT EXISTS classes (
+            id INTEGER PRIMARY KEY,
+            course_code TEXT NOT NULL
+        );
+    `);
+
+    // BUILDINGS
     // stores the buildings
     await db.execAsync(`
         CREATE TABLE IF NOT EXISTS buildings (
             id INTEGER PRIMARY KEY,
             building_code TEXT NOT NULL UNIQUE,
-            building_name TEXT NOT NULL
+            building_name TEXT NOT NULL,
+            latitude REAL NOT NULL,
+            longitude REAL NOT NULL,
         );
     `);
 
-    // stores the classes the student is taking
-    await db.execAsync(`
-        CREATE TABLE IF NOT EXISTS classes (
-            id INTEGER PRIMARY KEY,
-            course_code TEXT NOT NULL,
-            course_name TEXT
-        );
-    `);
-
+    // ROOMS
     // stores the room information
     await db.execAsync(`
         CREATE TABLE IF NOT EXISTS rooms (
@@ -38,18 +41,19 @@ export async function initializeDatabase() {
         );
     `);
 
+    // CLASS MEETINGS
     // stores the class meeting information
     await db.execAsync(`
         CREATE TABLE IF NOT EXISTS class_meetings (
             id INTEGER PRIMARY KEY,
             class_id INTEGER NOT NULL,
-            day INTEGER NOT NULL,
+            day INTEGER NOT NULL CHECK (day BETWEEN 0 AND 6),
             start_time TEXT NOT NULL,
             end_time TEXT NOT NULL,
-            building_id INTEGER,
-            room_number TEXT,
+            building_id INTEGER NOT NULL,
+            room_number TEXT NOT NULL,
 
-            FOREIGN KEY (class_id) REFERENCES classes(id),
+            FOREIGN KEY (class_id) REFERENCES classes(id) ON DELETE CASCADE,
             FOREIGN KEY (building_id) REFERENCES buildings(id)
         );
     `);

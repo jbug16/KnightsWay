@@ -8,54 +8,54 @@ import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 
 export default function ParkingScreen() {
-  return (
-    <SafeAreaView style={styles.container} edges={["top"]}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Parking</Text>
-      </View>
+	return (
+		<SafeAreaView style={styles.container} edges={["top"]}>
+			<View style={styles.header}>
+				<Text style={styles.title}>Parking</Text>
+			</View>
 
-      <View style={styles.search}>
-        <SearchBar />
-      </View>
+			<View style={styles.search}>
+				<SearchBar />
+			</View>
 
-      <View style={styles.list}>
-        <ParkingCard favorite />
-        <ParkingCard />
-        <ParkingCard />
-        <ParkingCard />
-        <ParkingCard />
-        <ParkingCard />
-        <ParkingCard />
-      </View>
-    </SafeAreaView>
-  );
+			<View style={styles.list}>
+				<ParkingCard favorite />
+				<ParkingCard />
+				<ParkingCard />
+				<ParkingCard />
+				<ParkingCard />
+				<ParkingCard />
+				<ParkingCard />
+			</View>
+		</SafeAreaView>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.background,
-  },
+	container: {
+		flex: 1,
+		backgroundColor: Colors.background,
+	},
 
-  header: {
-    paddingHorizontal: Spacing.base,
-    paddingTop: Spacing.base,
-    paddingBottom: Spacing.md,
-  },
+	header: {
+		paddingHorizontal: Spacing.base,
+		paddingTop: Spacing.base,
+		paddingBottom: Spacing.md,
+	},
 
-  title: {
-    fontFamily: Fonts.bold,
-    fontSize: Typography.screenTitle,
-    color: Colors.text,
-  },
+	title: {
+		fontFamily: Fonts.bold,
+		fontSize: Typography.screenTitle,
+		color: Colors.text,
+	},
 
-  search: {
-    paddingHorizontal: Spacing.base,
-    paddingBottom: Spacing.base,
-  },
+	search: {
+		paddingHorizontal: Spacing.base,
+		paddingBottom: Spacing.base,
+	},
 
-  list: {
-    paddingHorizontal: Spacing.base,
-    gap: Spacing.md,
-  },
+	list: {
+		paddingHorizontal: Spacing.base,
+		gap: Spacing.md,
+	},
 });
