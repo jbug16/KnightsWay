@@ -21,19 +21,11 @@ export default function ParkingCard({ favorite = false }: ParkingCardProps) {
 			<View style={styles.info}>
 				<Text style={styles.name}>Garage A</Text>
 				<View style={styles.status}>
-					<Ionicons
-						name="ellipse-outline"
-						size={Sizing.iconSmall}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="ellipse-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
 					<Text style={styles.statusText}>42% Full</Text>
 				</View>
 			</View>
-			<Ionicons
-				name="chevron-forward"
-				size={Sizing.iconMed}
-				color={Colors.textSecondary}
-			/>
+			<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 		</View>
 	);
 }

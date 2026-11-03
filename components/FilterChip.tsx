@@ -17,9 +17,7 @@ type FilterChipProps = {
 export default function FilterChip({ label, icon, selected }: FilterChipProps) {
 	return (
 		<View style={[styles.label, selected && styles.selected]}>
-			{icon ? (
-				<Ionicons name={icon} size={Sizing.iconMed} color={Colors.black} />
-			) : null}
+			{icon ? <Ionicons name={icon} size={Sizing.iconMed} color={Colors.black} /> : null}
 			<Text style={styles.buttonText}>{label}</Text>
 		</View>
 	);

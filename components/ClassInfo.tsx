@@ -15,33 +15,25 @@ type ClassInfoProps = {
 export default function ClassInfo({ showTag = true }: ClassInfoProps) {
 	return (
 		<View style={styles.container}>
-      // icon
+			{/* icon */}
 			<View style={styles.classIcon}>
 				<Ionicons name="school" size={Sizing.iconLarge} color={Colors.black} />
 			</View>
-      // course code
+			{/* course code */}
 			<View style={styles.classInfo}>
 				<View style={styles.classHeader}>
 					<Text style={styles.classCode}>COP 3503</Text>
-            // time left til class label
+					{/* time left til class label */}
 					{showTag ? <Tag /> : null}
 				</View>
-        // location
+				{/* location */}
 				<View style={styles.label}>
-					<Ionicons
-						name="location-outline"
-						size={Sizing.iconSmall}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="location-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
 					<Text style={styles.labelText}>Classroom Building I, Room 101</Text>
 				</View>
-        // time
+				{/* time */}
 				<View style={styles.label}>
-					<Ionicons
-						name="time-outline"
-						size={Sizing.iconSmall}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="time-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
 					<Text style={styles.labelText}>10:30 AM - 11:45 AM</Text>
 				</View>
 			</View>

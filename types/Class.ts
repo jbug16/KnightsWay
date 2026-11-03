@@ -7,5 +7,5 @@ export interface Class {
 	room: string;
 	days: number[]; // 0-6 = sunday-saturday
 	startTime: string; // 24hr time
-	endTime: string;   // 24hr time
+	endTime: string; // 24hr time
 }

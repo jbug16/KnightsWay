@@ -1,0 +1,12 @@
+node_modules
+.expo
+dist
+/ios
+/android
+/app
+/build
+.gradle
+.idea
+package-lock.json
+expo-env.d.ts
+assets/expo.icon

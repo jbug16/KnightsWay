@@ -14,8 +14,8 @@ import {
 import { useFonts } from "expo-font";
 
 // database
-import { useEffect } from 'react';
-import { initializeDatabase } from '../../database/database';
+import { useEffect } from "react";
+import { initializeDatabase } from "../../database/database";
 
 // This is the file that does the nav bar
 // Using the tabs it creates a bar at the bottom of the screen
@@ -34,7 +34,7 @@ export default function RootLayout() {
 	// database stuff
 	useEffect(() => {
 		async function setupDatabase() {
-			// 	
+			//
 			try {
 				await initializeDatabase();
 				console.log("Database initialized successfully!");
@@ -69,44 +69,36 @@ export default function RootLayout() {
 				headerShown: false,
 			}}
 		>
-      // Home screen
+			{/* Home screen */}
 			<Tabs.Screen
 				name="index"
 				options={{
 					title: "Home",
-					tabBarIcon: ({ color, size }) => (
-						<Ionicons name="home" size={size} color={color} />
-					),
+					tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
 				}}
 			/>
-      // Schedule screen
+			{/* Schedule screen */}
 			<Tabs.Screen
 				name="schedule"
 				options={{
 					title: "Schedule",
-					tabBarIcon: ({ color, size }) => (
-						<Ionicons name="calendar" size={size} color={color} />
-					),
+					tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} />,
 				}}
 			/>
-      // Parking screen
+			{/* Parking screen */}
 			<Tabs.Screen
 				name="parking"
 				options={{
 					title: "Parking",
-					tabBarIcon: ({ color, size }) => (
-						<Ionicons name="car" size={size} color={color} />
-					),
+					tabBarIcon: ({ color, size }) => <Ionicons name="car" size={size} color={color} />,
 				}}
 			/>
-      // Settings screen
+			{/* Settings screen */}
 			<Tabs.Screen
 				name="settings"
 				options={{
 					title: "Settings",
-					tabBarIcon: ({ color, size }) => (
-						<Ionicons name="settings" size={size} color={color} />
-					),
+					tabBarIcon: ({ color, size }) => <Ionicons name="settings" size={size} color={color} />,
 				}}
 			/>
 		</Tabs>

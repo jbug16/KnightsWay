@@ -11,7 +11,7 @@ import { Spacing } from "../../constants/spacing";
 export default function Index() {
 	return (
 		// safe area let's me hide the weird android nav top and not overlap my titles
-		// with the phone information and camera 
+		// with the phone information and camera
 		<SafeAreaView style={styles.container} edges={["top"]}>
 			<View style={styles.header}>
 				<SearchBar />

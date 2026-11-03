@@ -30,11 +30,7 @@ export default function SettingsRow({
 				{value ? (
 					<View style={styles.dropdown}>
 						<Text style={styles.value}>{value}</Text>
-						<Ionicons
-							name="chevron-down"
-							size={Sizing.iconSmall}
-							color={Colors.textSecondary}
-						/>
+						<Ionicons name="chevron-down" size={Sizing.iconSmall} color={Colors.textSecondary} />
 					</View>
 				) : null}
 			</View>
@@ -44,11 +40,7 @@ export default function SettingsRow({
 				</View>
 			) : null}
 			{chevron ? (
-				<Ionicons
-					name="chevron-forward"
-					size={Sizing.iconMed}
-					color={Colors.textSecondary}
-				/>
+				<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 			) : null}
 		</View>
 	);

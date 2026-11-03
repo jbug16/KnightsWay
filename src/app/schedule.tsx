@@ -33,51 +33,31 @@ export default function ScheduleScreen() {
 					<View style={styles.cardInfo}>
 						<ClassInfo showTag={false} />
 					</View>
-					<Ionicons
-						name="chevron-forward"
-						size={Sizing.iconMed}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 				</View>
 				<View style={styles.card}>
 					<View style={styles.cardInfo}>
 						<ClassInfo showTag={false} />
 					</View>
-					<Ionicons
-						name="chevron-forward"
-						size={Sizing.iconMed}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 				</View>
 				<View style={styles.card}>
 					<View style={styles.cardInfo}>
 						<ClassInfo showTag={false} />
 					</View>
-					<Ionicons
-						name="chevron-forward"
-						size={Sizing.iconMed}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 				</View>
 				<View style={styles.card}>
 					<View style={styles.cardInfo}>
 						<ClassInfo showTag={false} />
 					</View>
-					<Ionicons
-						name="chevron-forward"
-						size={Sizing.iconMed}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 				</View>
 				<View style={styles.card}>
 					<View style={styles.cardInfo}>
 						<ClassInfo showTag={false} />
 					</View>
-					<Ionicons
-						name="chevron-forward"
-						size={Sizing.iconMed}
-						color={Colors.textSecondary}
-					/>
+					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 				</View>
 			</View>
 		</SafeAreaView>

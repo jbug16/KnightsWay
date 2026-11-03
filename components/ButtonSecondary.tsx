@@ -31,5 +31,5 @@ const styles = StyleSheet.create({
 		fontFamily: Fonts.semibold,
 		fontSize: Typography.body,
 		color: Colors.black,
-	}
+	},
 });

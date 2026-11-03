@@ -1,23 +1,23 @@
-import * as SQLite from 'expo-sqlite';
+import * as SQLite from "expo-sqlite";
 
 export async function initializeDatabase() {
-    const db = await SQLite.openDatabaseAsync("knightsway.db");
+	const db = await SQLite.openDatabaseAsync("knightsway.db");
 
-    // enable foreign key enforcement
-    await db.execAsync('PRAGMA foreign_keys = ON;');
+	// enable foreign key enforcement
+	await db.execAsync("PRAGMA foreign_keys = ON;");
 
-    // CLASSES
-    // stores the classes the student is taking
-    await db.execAsync(`
+	// CLASSES
+	// stores the classes the student is taking
+	await db.execAsync(`
         CREATE TABLE IF NOT EXISTS classes (
             id INTEGER PRIMARY KEY,
             course_code TEXT NOT NULL
         );
     `);
 
-    // BUILDINGS
-    // stores the buildings
-    await db.execAsync(`
+	// BUILDINGS
+	// stores the buildings
+	await db.execAsync(`
         CREATE TABLE IF NOT EXISTS buildings (
             id INTEGER PRIMARY KEY,
             building_code TEXT NOT NULL UNIQUE,
@@ -27,9 +27,9 @@ export async function initializeDatabase() {
         );
     `);
 
-    // ROOMS
-    // stores the room information
-    await db.execAsync(`
+	// ROOMS
+	// stores the room information
+	await db.execAsync(`
         CREATE TABLE IF NOT EXISTS rooms (
             id INTEGER PRIMARY KEY,
             building_id INTEGER NOT NULL,
@@ -41,9 +41,9 @@ export async function initializeDatabase() {
         );
     `);
 
-    // CLASS MEETINGS
-    // stores the class meeting information
-    await db.execAsync(`
+	// CLASS MEETINGS
+	// stores the class meeting information
+	await db.execAsync(`
         CREATE TABLE IF NOT EXISTS class_meetings (
             id INTEGER PRIMARY KEY,
             class_id INTEGER NOT NULL,
@@ -58,5 +58,5 @@ export async function initializeDatabase() {
         );
     `);
 
-    return db;
+	return db;
 }

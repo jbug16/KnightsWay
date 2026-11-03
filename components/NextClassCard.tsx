@@ -11,17 +11,17 @@ import ClassInfo from "./ClassInfo";
 export default function NextClassCard() {
 	return (
 		<View style={styles.container}>
-      // Top text
+			{/* Top text */}
 			<View>
 				<Text style={styles.titleText}>Next Class</Text>
 			</View>
-      // Dividing line
+			{/* Dividing line */}
 			<View style={styles.divider} />
-      // Class information
+			{/* Class information */}
 			<View>
 				<ClassInfo />
 			</View>
-      // buttons
+			{/* buttons */}
 			<View style={styles.buttonContainer}>
 				<ButtonSecondary />
 				<ButtonPrimary />
@@ -60,5 +60,5 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		gap: Spacing.md,
 		paddingTop: Spacing.base,
-	}
+	},
 });
