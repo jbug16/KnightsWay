@@ -1,8 +1,8 @@
 import { Ionicons } from "@expo/vector-icons";
 import { ComponentProps } from "react";
 import { Pressable, StyleSheet } from "react-native";
-import { Colors } from "../constants/colors";
-import { Sizing } from "../constants/sizing";
+import { Colors } from "../../constants/colors";
+import { Sizing } from "../../constants/sizing";
 
 type ButtonProps = {
 	icon?: ComponentProps<typeof Ionicons>["name"];

@@ -2,10 +2,10 @@ import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // My custom components
-import CampusMap from "../../components/CampusMap";
-import FilterChip from "../../components/FilterChip";
-import NextClassCard from "../../components/NextClassCard";
-import SearchBar from "../../components/SearchBar";
+import CampusMap from "../../components/map/CampusMap";
+import NextClassCard from "../../components/schedule/NextClassCard";
+import FilterChip from "../../components/ui/FilterChip";
+import SearchBar from "../../components/ui/SearchBar";
 import { Spacing } from "../../constants/spacing";
 
 export default function Index() {

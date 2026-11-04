@@ -1,8 +1,8 @@
 import { StyleSheet, View } from "react-native";
-import { Spacing } from "../constants/spacing";
-import Button from "./Button";
+import { Spacing } from "../../constants/spacing";
 import ClassInfo from "./ClassInfo";
-import Sheet from "./Sheet";
+import Button from "../ui/Button";
+import Sheet from "../ui/Sheet";
 
 export default function NextClassCard() {
 	return (

@@ -2,10 +2,10 @@
 
 import { ReactNode } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Colors } from "../constants/colors";
-import { Fonts } from "../constants/fonts";
-import { Spacing } from "../constants/spacing";
-import { Typography } from "../constants/typography";
+import { Colors } from "../../constants/colors";
+import { Fonts } from "../../constants/fonts";
+import { Spacing } from "../../constants/spacing";
+import { Typography } from "../../constants/typography";
 
 type FieldProps = {
 	label: string;

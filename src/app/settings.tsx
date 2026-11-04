@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import SettingsRow from "../../components/SettingsRow";
+import SettingsRow from "../../components/settings/SettingsRow";
 import { Colors } from "../../constants/colors";
 import { Fonts } from "../../constants/fonts";
 import { Spacing } from "../../constants/spacing";

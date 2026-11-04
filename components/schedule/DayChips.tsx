@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
-import { Spacing } from "../constants/spacing";
-import FilterChip from "./FilterChip";
+import { Spacing } from "../../constants/spacing";
+import FilterChip from "../ui/FilterChip";
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 

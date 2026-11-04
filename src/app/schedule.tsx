@@ -2,8 +2,8 @@ import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import ClassInfo from "../../components/ClassInfo";
-import DayChips from "../../components/DayChips";
+import ClassInfo from "../../components/schedule/ClassInfo";
+import DayChips from "../../components/schedule/DayChips";
 import { Colors } from "../../constants/colors";
 import { Fonts } from "../../constants/fonts";
 import { Sizing } from "../../constants/sizing";
@@ -11,8 +11,8 @@ import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 
 import { useState } from "react";
-import CircleButton from "../../components/CircleButton";
-import ClassForm from "../../components/ClassForm";
+import ClassForm from "../../components/schedule/ClassForm";
+import CircleButton from "../../components/ui/CircleButton";
 
 export default function ScheduleScreen() {
 	// let use show/hide the add/edit class popup

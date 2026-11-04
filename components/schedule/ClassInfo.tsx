@@ -1,12 +1,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 
-import { Colors } from "../constants/colors";
-import { Fonts } from "../constants/fonts";
-import { Sizing } from "../constants/sizing";
-import { Spacing } from "../constants/spacing";
-import { Typography } from "../constants/typography";
-import Tag from "./Tag";
+import { Colors } from "../../constants/colors";
+import { Fonts } from "../../constants/fonts";
+import { Sizing } from "../../constants/sizing";
+import { Spacing } from "../../constants/spacing";
+import { Typography } from "../../constants/typography";
+import Tag from "../ui/Tag";
 
 type ClassInfoProps = {
 	showTag?: boolean;
@@ -24,7 +24,7 @@ export default function ClassInfo({ showTag = true }: ClassInfoProps) {
 				<View style={styles.classHeader}>
 					<Text style={styles.classCode}>COP 3503</Text>
 					{/* time left til class label */}
-					{showTag ? <Tag /> : null}
+					{showTag ? <Tag text="In 20 mins" /> : null}
 				</View>
 				{/* location */}
 				<View style={styles.label}>

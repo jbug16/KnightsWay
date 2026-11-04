@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ParkingCard from "../../components/ParkingCard";
-import SearchBar from "../../components/SearchBar";
+import ParkingCard from "../../components/parking/ParkingCard";
+import SearchBar from "../../components/ui/SearchBar";
 import { Colors } from "../../constants/colors";
 import { Fonts } from "../../constants/fonts";
 import { Spacing } from "../../constants/spacing";

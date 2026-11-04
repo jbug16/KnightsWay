@@ -3,12 +3,12 @@
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
 
-import { Spacing } from "../constants/spacing";
-import Button from "./Button";
+import { Spacing } from "../../constants/spacing";
 import DayChips from "./DayChips";
-import Field from "./Field";
-import Sheet from "./Sheet";
-import TextField from "./TextField";
+import Button from "../ui/Button";
+import Field from "../ui/Field";
+import Sheet from "../ui/Sheet";
+import TextField from "../ui/TextField";
 
 type ClassFormProps = {
 	visible: boolean;
