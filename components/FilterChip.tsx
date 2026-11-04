@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
-import { ComponentProps } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { ComponentProps, useState } from "react";
+import { Pressable, StyleSheet, Text } from "react-native";
 import { Colors } from "../constants/colors";
 import { Fonts } from "../constants/fonts";
 import { Sizing } from "../constants/sizing";
@@ -12,14 +12,26 @@ type FilterChipProps = {
 	label: string;
 	icon?: ComponentProps<typeof Ionicons>["name"];
 	selected?: boolean;
+	onPress?: () => void;
 };
 
-export default function FilterChip({ label, icon, selected }: FilterChipProps) {
+export default function FilterChip({ label, icon, selected, onPress }: FilterChipProps) {
+	const [localSelected, setLocalSelected] = useState(false);
+	const isSelected = selected ?? localSelected;
+
+	// toggle here when the parent is not keeping track of selected
+	const handlePress = () => {
+		if (selected === undefined) {
+			setLocalSelected(!localSelected);
+		}
+		onPress?.();
+	};
+
 	return (
-		<View style={[styles.label, selected && styles.selected]}>
+		<Pressable onPress={handlePress} style={[styles.label, isSelected && styles.selected]}>
 			{icon ? <Ionicons name={icon} size={Sizing.iconMed} color={Colors.black} /> : null}
 			<Text style={styles.buttonText}>{label}</Text>
-		</View>
+		</Pressable>
 	);
 }
 

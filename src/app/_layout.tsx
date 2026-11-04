@@ -22,15 +22,6 @@ import { initializeDatabase } from "../../database/database";
 // It also links the files in the same folder here to the buttons
 // WAY EASIER THAN XML!!!
 export default function RootLayout() {
-	// font stuff
-	const [fontsLoaded] = useFonts({
-		Inter_400Regular,
-		Inter_500Medium,
-		Inter_600SemiBold,
-		Inter_700Bold,
-	});
-	if (!fontsLoaded) return null;
-
 	// database stuff
 	useEffect(() => {
 		async function setupDatabase() {
@@ -45,6 +36,15 @@ export default function RootLayout() {
 
 		setupDatabase();
 	}, []);
+
+	// font stuff
+	const [fontsLoaded] = useFonts({
+		Inter_400Regular,
+		Inter_500Medium,
+		Inter_600SemiBold,
+		Inter_700Bold,
+	});
+	if (!fontsLoaded) return null;
 
 	// navbar
 	return (

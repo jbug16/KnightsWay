@@ -1,60 +1,26 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Colors } from "../constants/colors";
-import { Fonts } from "../constants/fonts";
-import { Sizing } from "../constants/sizing";
+import { StyleSheet, View } from "react-native";
 import { Spacing } from "../constants/spacing";
-import { Typography } from "../constants/typography";
-import ButtonPrimary from "./ButtonPrimary";
-import ButtonSecondary from "./ButtonSecondary";
+import Button from "./Button";
 import ClassInfo from "./ClassInfo";
+import Sheet from "./Sheet";
 
 export default function NextClassCard() {
 	return (
-		<View style={styles.container}>
-			{/* Top text */}
-			<View>
-				<Text style={styles.titleText}>Next Class</Text>
-			</View>
-			{/* Dividing line */}
-			<View style={styles.divider} />
+		<Sheet title="Next Class">
 			{/* Class information */}
 			<View>
 				<ClassInfo />
 			</View>
 			{/* buttons */}
 			<View style={styles.buttonContainer}>
-				<ButtonSecondary />
-				<ButtonPrimary />
+				<Button variant="secondary" label="View Indoor Map" icon="map-outline" />
+				<Button variant="primary" label="Navigate" icon="navigate-outline" />
 			</View>
-		</View>
+		</Sheet>
 	);
 }
 
 const styles = StyleSheet.create({
-	container: {
-		position: "absolute",
-		bottom: 0,
-		width: "100%",
-		backgroundColor: Colors.white,
-		borderTopLeftRadius: Sizing.radiusLarge,
-		borderTopRightRadius: Sizing.radiusLarge,
-		borderColor: Colors.border,
-		borderWidth: Sizing.borderThin,
-		padding: Spacing.base,
-		minHeight: 120,
-	},
-
-	titleText: {
-		fontSize: Typography.sectionTitle,
-		fontFamily: Fonts.bold,
-	},
-
-	divider: {
-		height: 1,
-		backgroundColor: Colors.border,
-		marginVertical: Spacing.md,
-	},
-
 	buttonContainer: {
 		flexDirection: "row",
 		alignItems: "center",

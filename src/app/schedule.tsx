@@ -3,29 +3,31 @@ import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import ClassInfo from "../../components/ClassInfo";
-import FilterChip from "../../components/FilterChip";
+import DayChips from "../../components/DayChips";
 import { Colors } from "../../constants/colors";
 import { Fonts } from "../../constants/fonts";
 import { Sizing } from "../../constants/sizing";
 import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 
+import { useState } from "react";
+import CircleButton from "../../components/CircleButton";
+import ClassForm from "../../components/ClassForm";
+
 export default function ScheduleScreen() {
+	// let use show/hide the add/edit class popup
+	const [isClassFormVisible, setClassFormVisible] = useState(false);
+	const [selectedDays, setSelectedDays] = useState<string[]>([]);
+
 	return (
 		<SafeAreaView style={styles.container} edges={["top"]}>
 			<View style={styles.header}>
 				<Text style={styles.title}>My Schedule</Text>
-				<View style={styles.addButton}>
-					<Ionicons name="add" size={Sizing.iconMed} color={Colors.black} />
-				</View>
+				<CircleButton icon="add" onPress={() => setClassFormVisible(true)} />
 			</View>
 
 			<View style={styles.filterContainer}>
-				<FilterChip label="Mon" selected />
-				<FilterChip label="Tue" />
-				<FilterChip label="Wed" />
-				<FilterChip label="Thu" />
-				<FilterChip label="Fri" />
+				<DayChips selected={selectedDays} onChange={setSelectedDays} />
 			</View>
 
 			<View style={styles.list}>
@@ -35,30 +37,8 @@ export default function ScheduleScreen() {
 					</View>
 					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 				</View>
-				<View style={styles.card}>
-					<View style={styles.cardInfo}>
-						<ClassInfo showTag={false} />
-					</View>
-					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
-				</View>
-				<View style={styles.card}>
-					<View style={styles.cardInfo}>
-						<ClassInfo showTag={false} />
-					</View>
-					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
-				</View>
-				<View style={styles.card}>
-					<View style={styles.cardInfo}>
-						<ClassInfo showTag={false} />
-					</View>
-					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
-				</View>
-				<View style={styles.card}>
-					<View style={styles.cardInfo}>
-						<ClassInfo showTag={false} />
-					</View>
-					<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
-				</View>
+
+				<ClassForm visible={isClassFormVisible} onClose={() => setClassFormVisible(false)} />
 			</View>
 		</SafeAreaView>
 	);
@@ -85,19 +65,7 @@ const styles = StyleSheet.create({
 		color: Colors.text,
 	},
 
-	addButton: {
-		width: Sizing.buttonHeight,
-		height: Sizing.buttonHeight,
-		borderRadius: Sizing.buttonHeight,
-		backgroundColor: Colors.primary,
-		alignItems: "center",
-		justifyContent: "center",
-	},
-
 	filterContainer: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.sm,
 		paddingHorizontal: Spacing.base,
 		paddingBottom: Spacing.base,
 	},

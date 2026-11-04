@@ -23,7 +23,7 @@ export async function initializeDatabase() {
             building_code TEXT NOT NULL UNIQUE,
             building_name TEXT NOT NULL,
             latitude REAL NOT NULL,
-            longitude REAL NOT NULL,
+            longitude REAL NOT NULL
         );
     `);
 
