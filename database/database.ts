@@ -15,32 +15,6 @@ export async function initializeDatabase() {
         );
     `);
 
-	// BUILDINGS
-	// stores the buildings
-	await db.execAsync(`
-        CREATE TABLE IF NOT EXISTS buildings (
-            id INTEGER PRIMARY KEY,
-            building_code TEXT NOT NULL UNIQUE,
-            building_name TEXT NOT NULL,
-            latitude REAL NOT NULL,
-            longitude REAL NOT NULL
-        );
-    `);
-
-	// ROOMS
-	// stores the room information
-	await db.execAsync(`
-        CREATE TABLE IF NOT EXISTS rooms (
-            id INTEGER PRIMARY KEY,
-            building_id INTEGER NOT NULL,
-            room_number TEXT NOT NULL,
-            floor INTEGER NOT NULL,
-
-            FOREIGN KEY (building_id) REFERENCES buildings(id),
-            UNIQUE (building_id, room_number)
-        );
-    `);
-
 	// CLASS MEETINGS
 	// stores the class meeting information
 	await db.execAsync(`
@@ -50,11 +24,10 @@ export async function initializeDatabase() {
             day INTEGER NOT NULL CHECK (day BETWEEN 0 AND 6),
             start_time TEXT NOT NULL,
             end_time TEXT NOT NULL,
-            building_id INTEGER NOT NULL,
+            building_code TEXT NOT NULL,
             room_number TEXT NOT NULL,
 
-            FOREIGN KEY (class_id) REFERENCES classes(id) ON DELETE CASCADE,
-            FOREIGN KEY (building_id) REFERENCES buildings(id)
+            FOREIGN KEY (class_id) REFERENCES classes(id) ON DELETE CASCADE
         );
     `);
 

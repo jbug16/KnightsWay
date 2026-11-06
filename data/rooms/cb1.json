@@ -1,0 +1,17 @@
+{
+  "building_code": "CB1",
+  "rooms": [
+    {
+      "room_number": "101",
+      "floor": 1,
+      "x": 10,
+      "y": 20
+    },
+    {
+      "room_number": "102",
+      "floor": 1,
+      "x": 15,
+      "y": 25
+    }
+  ]
+}
