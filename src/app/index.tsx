@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // My custom components
@@ -17,12 +17,17 @@ export default function Index() {
 				<SearchBar />
 			</View>
 
-			<View style={styles.filterContainer}>
+			<ScrollView
+				horizontal
+				showsHorizontalScrollIndicator={false}
+				style={styles.filterRow}
+				contentContainerStyle={styles.filterContent}
+			>
 				<Chip label="Classes" icon="school" />
 				<Chip label="Parking" icon="car" />
 				<Chip label="Buildings" icon="home" />
 				<Chip label="Bus Stops" icon="bus" />
-			</View>
+			</ScrollView>
 
 			<View style={styles.mapContainer}>
 				<CampusMap />
@@ -44,16 +49,20 @@ const styles = StyleSheet.create({
 		padding: Spacing.sm,
 	},
 
-	filterContainer: {
-		flexDirection: "row",
-		alignItems: "center",
-		gap: Spacing.xs,
-		paddingHorizontal: Spacing.sm,
-		paddingBottom: Spacing.sm,
-	},
-
 	mapContainer: {
 		flex: 1,
+	},
+
+	filterRow: {
+		flexGrow: 0,
+	},
+
+	filterContent: {
+		flexDirection: "row",
+		alignItems: "center",
+		gap: Spacing.sm,
+		paddingHorizontal: Spacing.sm,
+		paddingBottom: Spacing.sm,
 	},
 
 	cardContainer: {},

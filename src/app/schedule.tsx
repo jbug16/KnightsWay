@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { Colors } from "../../constants/colors";
@@ -32,7 +32,7 @@ export default function ScheduleScreen() {
 				<DayChips selected={selectedDays} onChange={setSelectedDays} />
 			</View>
 
-			<View style={styles.list}>
+			<ScrollView style={styles.list} contentContainerStyle={styles.listContent}>
 				{/* the card for each class */}
 				{classes.map((item) => (
 					<ClassRow key={item.id} item={item} />
@@ -40,7 +40,7 @@ export default function ScheduleScreen() {
 
 				{/* the add/edit form, by default it is hidden until clicked on */}
 				<ClassForm visible={isClassFormVisible} onClose={() => setClassFormVisible(false)} />
-			</View>
+			</ScrollView>
 		</SafeAreaView>
 	);
 }
@@ -59,5 +59,10 @@ const styles = StyleSheet.create({
 	list: {
 		paddingHorizontal: Spacing.base,
 		gap: Spacing.md,
+	},
+
+	listContent: {
+		paddingBottom: Spacing.base,
+		gap: Spacing.sm,
 	},
 });

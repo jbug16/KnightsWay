@@ -33,7 +33,7 @@ export default function ClassSummary({ showTag = true, courseCode }: ClassSummar
 				{/* location */}
 				<View style={styles.label}>
 					<Ionicons name="location-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
-					<Text style={styles.labelText}>Classroom Building I, Room 101</Text>
+					<Text style={styles.labelText}>CB1, Room 101</Text>
 				</View>
 				{/* time */}
 				<View style={styles.label}>
