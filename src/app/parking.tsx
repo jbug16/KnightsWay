@@ -1,4 +1,4 @@
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ParkingRow from "../../components/parking/ParkingRow";
 import ScreenHeader from "../../components/ui/ScreenHeader";
@@ -15,13 +15,13 @@ export default function ParkingScreen() {
 				<SearchBar />
 			</View>
 
-			<View style={styles.list}>
+			<ScrollView style={styles.list} contentContainerStyle={styles.listContent}>
 				<ParkingRow favorite name="Garage A" status={50} />
 				<ParkingRow name="Garage B" status={10} />
 				<ParkingRow name="Garage C" status={98} />
 				<ParkingRow name="Garage I" status={67} />
 				<ParkingRow name="Garage J" status={24} />
-			</View>
+			</ScrollView>
 		</SafeAreaView>
 	);
 }
@@ -40,5 +40,10 @@ const styles = StyleSheet.create({
 	list: {
 		paddingHorizontal: Spacing.base,
 		gap: Spacing.md,
+	},
+
+	listContent: {
+		paddingBottom: Spacing.base,
+		gap: Spacing.sm,
 	},
 });

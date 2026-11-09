@@ -15,7 +15,7 @@ export default function ClassRow({ item }: ClassRowProps) {
 	return (
 		<View style={styles.card}>
 			<View style={styles.cardInfo}>
-				<ClassSummary courseCode={item.course_code} />
+				<ClassSummary courseCode={item.course_code} showTag={false} />
 			</View>
 			<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />
 		</View>
