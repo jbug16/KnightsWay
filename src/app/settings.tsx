@@ -1,18 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import SettingsRow from "../../components/settings/SettingsRow";
+import ScreenHeader from "../../components/ui/ScreenHeader";
 import { Colors } from "../../constants/colors";
-import { Fonts } from "../../constants/fonts";
 import { Spacing } from "../../constants/spacing";
-import { Typography } from "../../constants/typography";
 
 export default function SettingsScreen() {
 	return (
 		<SafeAreaView style={styles.container} edges={["top"]}>
-			<View style={styles.header}>
-				<Text style={styles.title}>Settings</Text>
-			</View>
+			<ScreenHeader title="Settings" />
 
 			<View style={styles.list}>
 				<SettingsRow icon="square-outline" label="Permit Type" value="Student" />
@@ -28,18 +25,6 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: Colors.background,
-	},
-
-	header: {
-		paddingHorizontal: Spacing.base,
-		paddingTop: Spacing.base,
-		paddingBottom: Spacing.md,
-	},
-
-	title: {
-		fontFamily: Fonts.bold,
-		fontSize: Typography.screenTitle,
-		color: Colors.text,
 	},
 
 	list: {

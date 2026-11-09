@@ -1,6 +1,8 @@
+// this is a component for selecting the days of the week
+
 import { StyleSheet, View } from "react-native";
 import { Spacing } from "../../constants/spacing";
-import FilterChip from "../ui/FilterChip";
+import Chip from "../ui/Chip";
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
@@ -22,11 +24,7 @@ export default function DayChips({ selected, onChange }: DayChipsProps) {
 		<View style={styles.days}>
 			{days.map((day) => (
 				<View key={day} style={styles.day}>
-					<FilterChip
-						label={day}
-						selected={selected.includes(day)}
-						onPress={() => toggleDay(day)}
-					/>
+					<Chip label={day} selected={selected.includes(day)} onPress={() => toggleDay(day)} />
 				</View>
 			))}
 		</View>

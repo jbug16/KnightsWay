@@ -6,11 +6,13 @@ import { Sizing } from "../../constants/sizing";
 import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 
-type ParkingCardProps = {
+type ParkingRowProps = {
+	name?: string;
+	status?: number;
 	favorite?: boolean;
 };
 
-export default function ParkingCard({ favorite = false }: ParkingCardProps) {
+export default function ParkingRow({ name, status, favorite = false }: ParkingRowProps) {
 	return (
 		<View style={[styles.card, favorite && styles.favorite]}>
 			<Ionicons
@@ -19,10 +21,10 @@ export default function ParkingCard({ favorite = false }: ParkingCardProps) {
 				color={Colors.black}
 			/>
 			<View style={styles.info}>
-				<Text style={styles.name}>Garage A</Text>
+				<Text style={styles.name}>{name}</Text>
 				<View style={styles.status}>
 					<Ionicons name="ellipse-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
-					<Text style={styles.statusText}>42% Full</Text>
+					<Text style={styles.statusText}>{status?.toString()}% Full</Text>
 				</View>
 			</View>
 			<Ionicons name="chevron-forward" size={Sizing.iconMed} color={Colors.textSecondary} />

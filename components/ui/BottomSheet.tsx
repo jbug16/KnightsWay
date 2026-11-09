@@ -1,7 +1,7 @@
-// bottom card with a title and a dividing line
+// a template for a bottom panel
 
 import { ReactNode } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Colors } from "../../constants/colors";
 import { Fonts } from "../../constants/fonts";
 import { Sizing } from "../../constants/sizing";
@@ -9,31 +9,46 @@ import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 import CircleButton from "./CircleButton";
 
-type SheetProps = {
-	title: string;
+type BottomSheetProps = {
+	title?: string;
 	onClose?: () => void;
+	showHandle?: boolean;
 	children: ReactNode;
 };
 
-export default function Sheet({ title, onClose, children }: SheetProps) {
+export default function BottomSheet({
+	title,
+	onClose,
+	showHandle = false,
+	children,
+}: BottomSheetProps) {
 	return (
 		<View style={styles.container}>
-			<View style={styles.backdrop} />
+			<Pressable
+				style={styles.backdrop}
+				onPress={onClose}
+				disabled={!onClose}
+				accessibilityRole="button"
+				accessibilityLabel="Close"
+			/>
 			<View style={styles.sheet}>
-				{/* Top text */}
-				<View style={styles.header}>
-					<Text style={styles.titleText}>{title}</Text>
-					{onClose ? (
-						<CircleButton
-							icon="close"
-							bgColor={Colors.surface}
-							iconColor={Colors.black}
-							onPress={onClose}
-						/>
-					) : null}
-				</View>
-				{/* Dividing line */}
-				<View style={styles.divider} />
+				{showHandle ? <View style={styles.handle} /> : null}
+				{title ? (
+					<>
+						<View style={styles.header}>
+							<Text style={styles.titleText}>{title}</Text>
+							{onClose ? (
+								<CircleButton
+									icon="close"
+									bgColor={Colors.surface}
+									iconColor={Colors.black}
+									onPress={onClose}
+								/>
+							) : null}
+						</View>
+						<View style={styles.divider} />
+					</>
+				) : null}
 				{children}
 			</View>
 		</View>
@@ -61,6 +76,16 @@ const styles = StyleSheet.create({
 		borderColor: Colors.border,
 		borderWidth: Sizing.borderThin,
 		padding: Spacing.base,
+	},
+
+	handle: {
+		alignSelf: "center",
+		width: 36,
+		height: 4,
+		borderRadius: Sizing.radiusSmall,
+		backgroundColor: Colors.textSecondary,
+		opacity: 0.35,
+		marginBottom: Spacing.md,
 	},
 
 	header: {

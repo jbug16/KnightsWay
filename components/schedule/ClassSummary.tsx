@@ -1,3 +1,6 @@
+// this is the little card that tells the user about the class
+// used to display all classes and the upcoming class
+
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 
@@ -8,11 +11,12 @@ import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 import Tag from "../ui/Tag";
 
-type ClassInfoProps = {
+type ClassSummaryProps = {
 	showTag?: boolean;
+	courseCode?: string;
 };
 
-export default function ClassInfo({ showTag = true }: ClassInfoProps) {
+export default function ClassSummary({ showTag = true, courseCode }: ClassSummaryProps) {
 	return (
 		<View style={styles.container}>
 			{/* icon */}
@@ -22,7 +26,7 @@ export default function ClassInfo({ showTag = true }: ClassInfoProps) {
 			{/* course code */}
 			<View style={styles.classInfo}>
 				<View style={styles.classHeader}>
-					<Text style={styles.classCode}>COP 3503</Text>
+					<Text style={styles.classCode}>{courseCode}</Text>
 					{/* time left til class label */}
 					{showTag ? <Tag text="In 20 mins" /> : null}
 				</View>

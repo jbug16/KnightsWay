@@ -1,14 +1,15 @@
-// add or edit class
+// this is the popup/sheet that comes up to add or edit a class
 
 import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
 
 import { Spacing } from "../../constants/spacing";
-import DayChips from "./DayChips";
+import { addClass } from "../../services/classStorage";
+import BottomSheet from "../ui/BottomSheet";
 import Button from "../ui/Button";
-import Field from "../ui/Field";
-import Sheet from "../ui/Sheet";
+import FormField from "../ui/FormField";
 import TextField from "../ui/TextField";
+import DayChips from "./DayChips";
 
 type ClassFormProps = {
 	visible: boolean;
@@ -25,7 +26,7 @@ export default function ClassForm({ visible, onClose }: ClassFormProps) {
 
 	// what happens when we close the modal
 	const handleClose = () => {
-		// result all values, dont save them
+		// reset all values, dont save them
 		setCourseCode("");
 		setBuilding("");
 		setRoom("");
@@ -35,9 +36,13 @@ export default function ClassForm({ visible, onClose }: ClassFormProps) {
 		onClose();
 	};
 
+	async function handleAddClass() {
+		await addClass(courseCode);
+	}
+
 	return (
 		<Modal visible={visible} transparent={true} onRequestClose={handleClose}>
-			<Sheet title="Add Class" onClose={handleClose}>
+			<BottomSheet title="Add Class" onClose={handleClose}>
 				<View style={styles.fields}>
 					<TextField
 						label="Course Code"
@@ -58,9 +63,9 @@ export default function ClassForm({ visible, onClose }: ClassFormProps) {
 							<TextField label="Room" value={room} onChangeText={setRoom} placeholder="e.g. 104" />
 						</View>
 					</View>
-					<Field label="Days">
+					<FormField label="Days">
 						<DayChips selected={selectedDays} onChange={setSelectedDays} />
-					</Field>
+					</FormField>
 					<View style={styles.row}>
 						<View style={styles.half}>
 							<TextField
@@ -82,9 +87,9 @@ export default function ClassForm({ visible, onClose }: ClassFormProps) {
 				</View>
 				{/* buttons */}
 				<View style={styles.buttonContainer}>
-					<Button variant="primary" label="Add Class" />
+					<Button variant="primary" label="Add Class" onPress={handleAddClass} />
 				</View>
-			</Sheet>
+			</BottomSheet>
 		</Modal>
 	);
 }

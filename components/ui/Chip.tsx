@@ -8,14 +8,14 @@ import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 
 // allow different labels
-type FilterChipProps = {
+type ChipProps = {
 	label: string;
 	icon?: ComponentProps<typeof Ionicons>["name"];
 	selected?: boolean;
 	onPress?: () => void;
 };
 
-export default function FilterChip({ label, icon, selected, onPress }: FilterChipProps) {
+export default function Chip({ label, icon, selected, onPress }: ChipProps) {
 	const [localSelected, setLocalSelected] = useState(false);
 	const isSelected = selected ?? localSelected;
 

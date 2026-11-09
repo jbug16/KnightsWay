@@ -7,12 +7,12 @@ import { Fonts } from "../../constants/fonts";
 import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 
-type FieldProps = {
+type FormFieldProps = {
 	label: string;
 	children: ReactNode;
 };
 
-export default function Field({ label, children }: FieldProps) {
+export default function FormField({ label, children }: FormFieldProps) {
 	return (
 		<View style={styles.field}>
 			<Text style={styles.label}>{label}</Text>

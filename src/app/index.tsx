@@ -3,8 +3,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 // My custom components
 import CampusMap from "../../components/map/CampusMap";
-import NextClassCard from "../../components/schedule/NextClassCard";
-import FilterChip from "../../components/ui/FilterChip";
+import NextClassSheet from "../../components/schedule/NextClassSheet";
+import Chip from "../../components/ui/Chip";
 import SearchBar from "../../components/ui/SearchBar";
 import { Spacing } from "../../constants/spacing";
 
@@ -18,10 +18,10 @@ export default function Index() {
 			</View>
 
 			<View style={styles.filterContainer}>
-				<FilterChip label="Classes" icon="school" />
-				<FilterChip label="Parking" icon="car" />
-				<FilterChip label="Buildings" icon="home" />
-				<FilterChip label="Bus Stops" icon="bus" />
+				<Chip label="Classes" icon="school" />
+				<Chip label="Parking" icon="car" />
+				<Chip label="Buildings" icon="home" />
+				<Chip label="Bus Stops" icon="bus" />
 			</View>
 
 			<View style={styles.mapContainer}>
@@ -29,7 +29,7 @@ export default function Index() {
 			</View>
 
 			<View style={styles.cardContainer}>
-				<NextClassCard />
+				<NextClassSheet />
 			</View>
 		</SafeAreaView>
 	);

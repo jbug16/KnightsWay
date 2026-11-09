@@ -1,4 +1,4 @@
-import Field from "./Field";
+import FormField from "./FormField";
 import Input from "./Input";
 
 type TextFieldProps = {
@@ -10,8 +10,8 @@ type TextFieldProps = {
 
 export default function TextField({ label, value, onChangeText, placeholder }: TextFieldProps) {
 	return (
-		<Field label={label}>
+		<FormField label={label}>
 			<Input value={value} onChangeText={onChangeText} placeholder={placeholder} />
-		</Field>
+		</FormField>
 	);
 }

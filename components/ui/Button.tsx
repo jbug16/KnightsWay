@@ -13,6 +13,7 @@ type ButtonProps = {
 	label: string;
 	icon?: ComponentProps<typeof Ionicons>["name"];
 	variant?: ButtonVariant;
+	onPress?: () => void;
 };
 
 const variantColors: Record<
@@ -31,13 +32,8 @@ const variantColors: Record<
 	},
 };
 
-export default function Button({ label, icon, variant = "primary" }: ButtonProps) {
+export default function Button({ label, icon, variant = "primary", onPress }: ButtonProps) {
 	const colors = variantColors[variant];
-
-	// what happens when clicked, just gonna default to alert for now
-	const onPress = () => {
-		alert("Success");
-	};
 
 	return (
 		<Pressable onPress={onPress} style={styles.button}>
@@ -52,7 +48,6 @@ export default function Button({ label, icon, variant = "primary" }: ButtonProps
 const styles = StyleSheet.create({
 	button: {
 		flex: 1,
-		minWidth: "50%",
 	},
 
 	label: {
@@ -63,9 +58,11 @@ const styles = StyleSheet.create({
 		borderRadius: Sizing.radiusMedium,
 		alignItems: "center",
 		justifyContent: "center",
+		paddingHorizontal: Spacing.md,
 	},
 
 	buttonText: {
+		flexShrink: 1,
 		fontFamily: Fonts.semibold,
 		fontSize: Typography.body,
 	},

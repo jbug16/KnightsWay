@@ -4,19 +4,19 @@ import { Pressable, StyleSheet } from "react-native";
 import { Colors } from "../../constants/colors";
 import { Sizing } from "../../constants/sizing";
 
-type ButtonProps = {
+type CircleButtonProps = {
 	icon?: ComponentProps<typeof Ionicons>["name"];
 	bgColor?: string;
 	iconColor?: string;
 	onPress?: () => void;
 };
 
-export default function Button({
+export default function CircleButton({
 	icon,
 	bgColor = Colors.primary,
 	iconColor = Colors.black,
 	onPress,
-}: ButtonProps) {
+}: CircleButtonProps) {
 	return (
 		<Pressable style={[styles.button, { backgroundColor: bgColor }]} onPress={onPress}>
 			<Ionicons name={icon} size={Sizing.iconMed} color={iconColor} />
