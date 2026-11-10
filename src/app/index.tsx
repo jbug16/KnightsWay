@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Keyboard, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // My custom components
@@ -22,6 +22,7 @@ export default function Index() {
 				showsHorizontalScrollIndicator={false}
 				style={styles.filterRow}
 				contentContainerStyle={styles.filterContent}
+				onTouchStart={Keyboard.dismiss}
 			>
 				<Chip label="Classes" icon="school" />
 				<Chip label="Parking" icon="car" />

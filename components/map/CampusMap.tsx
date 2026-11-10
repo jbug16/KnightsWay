@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Keyboard, StyleSheet } from "react-native";
 import MapView from "react-native-maps";
 // using this little plugin thing someone made:
 // https://github.com/react-native-maps/react-native-maps
@@ -7,6 +7,7 @@ export default function CampusMap() {
 	return (
 		<MapView
 			style={styles.map}
+			onPress={Keyboard.dismiss}
 			initialRegion={{
 				latitude: 28.598101,
 				longitude: -81.202883,
