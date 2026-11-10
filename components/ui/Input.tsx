@@ -25,6 +25,8 @@ export default function Input({ value, onChangeText, placeholder, icon }: InputP
 				onChangeText={onChangeText}
 				placeholder={placeholder}
 				placeholderTextColor={Colors.textSecondary}
+				autoCorrect={false}
+				autoCapitalize="none"
 			/>
 		</View>
 	);
