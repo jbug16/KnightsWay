@@ -1,8 +1,8 @@
 // this is a component for selecting the days of the week
 
 import { StyleSheet, View } from "react-native";
-import { Spacing } from "../../constants/spacing";
-import Chip from "../ui/Chip";
+import { Spacing } from "../../../constants/spacing";
+import Chip from "../../ui/Chip";
 
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
