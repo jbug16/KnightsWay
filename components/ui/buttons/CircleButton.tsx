@@ -8,6 +8,7 @@ type CircleButtonProps = {
 	icon?: ComponentProps<typeof Ionicons>["name"];
 	bgColor?: string;
 	iconColor?: string;
+	size?: number;
 	onPress?: () => void;
 	accessibilityLabel?: string;
 };
@@ -16,17 +17,20 @@ export default function CircleButton({
 	icon,
 	bgColor = Colors.primary,
 	iconColor = Colors.black,
+	size = Sizing.buttonHeight,
 	onPress,
 	accessibilityLabel,
 }: CircleButtonProps) {
+	const iconSize = Math.round((Sizing.iconMed / Sizing.buttonHeight) * size);
+
 	return (
 		<Pressable
-			style={[styles.button, { backgroundColor: bgColor }]}
+			style={[styles.button, { backgroundColor: bgColor, width: size, height: size, borderRadius: size }]}
 			onPress={onPress}
 			accessibilityRole="button"
 			accessibilityLabel={accessibilityLabel}
 		>
-			<Ionicons name={icon} size={Sizing.iconMed} color={iconColor} />
+			<Ionicons name={icon} size={iconSize} color={iconColor} />
 		</Pressable>
 	);
 }

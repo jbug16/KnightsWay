@@ -1,27 +1,30 @@
 // a template for a bottom panel
 
 import { ReactNode } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { Colors } from "../../constants/colors";
-import { Fonts } from "../../constants/fonts";
 import { Sizing } from "../../constants/sizing";
 import { Spacing } from "../../constants/spacing";
-import { Typography } from "../../constants/typography";
-import CircleButton from "./CircleButton";
+import CloseButton from "./buttons/CloseButton";
+import SheetHeader from "./SheetHeader";
 
 type BottomSheetProps = {
 	title?: string;
+	action?: ReactNode;
+	onHeaderPress?: () => void;
 	onClose?: () => void;
-	showHandle?: boolean;
 	children: ReactNode;
 };
 
 export default function BottomSheet({
 	title,
+	action,
+	onHeaderPress,
 	onClose,
-	showHandle = false,
 	children,
 }: BottomSheetProps) {
+	const headerAction = action ?? (onClose ? <CloseButton onPress={onClose} /> : null);
+
 	return (
 		<View style={styles.container}>
 			<Pressable
@@ -32,20 +35,9 @@ export default function BottomSheet({
 				accessibilityLabel="Close"
 			/>
 			<View style={styles.sheet}>
-				{showHandle ? <View style={styles.handle} /> : null}
 				{title ? (
 					<>
-						<View style={styles.header}>
-							<Text style={styles.titleText}>{title}</Text>
-							{onClose ? (
-								<CircleButton
-									icon="close"
-									bgColor={Colors.surface}
-									iconColor={Colors.black}
-									onPress={onClose}
-								/>
-							) : null}
-						</View>
+						<SheetHeader title={title} action={headerAction} onPress={onHeaderPress} />
 						<View style={styles.divider} />
 					</>
 				) : null}
@@ -76,27 +68,6 @@ const styles = StyleSheet.create({
 		borderColor: Colors.border,
 		borderWidth: Sizing.borderThin,
 		padding: Spacing.base,
-	},
-
-	handle: {
-		alignSelf: "center",
-		width: 36,
-		height: 4,
-		borderRadius: Sizing.radiusSmall,
-		backgroundColor: Colors.textSecondary,
-		opacity: 0.35,
-		marginBottom: Spacing.md,
-	},
-
-	header: {
-		flexDirection: "row",
-		alignItems: "center",
-		justifyContent: "space-between",
-	},
-
-	titleText: {
-		fontSize: Typography.sectionTitle,
-		fontFamily: Fonts.bold,
 	},
 
 	divider: {

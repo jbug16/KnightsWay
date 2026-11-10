@@ -3,14 +3,14 @@
 import { StyleSheet, View } from "react-native";
 import { Spacing } from "../../constants/spacing";
 import BottomSheet from "../ui/BottomSheet";
-import Button from "../ui/Button";
-import ClassSummary from "./ClassSummary";
+import Button from "../ui/buttons/Button";
+import ClassSummary from "./helpers/ClassSummary";
 
 export default function NextClassSheet() {
 	return (
 		<BottomSheet title="Next Class">
 			<View>
-				<ClassSummary />
+				<ClassSummary courseCode="Example123" />
 			</View>
 			{/* buttons */}
 			<View style={styles.buttonContainer}>
