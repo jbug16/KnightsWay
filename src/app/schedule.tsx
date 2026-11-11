@@ -25,7 +25,7 @@ export default function ScheduleScreen() {
 		<SafeAreaView style={styles.container} edges={["top"]}>
 			<ScreenHeader
 				title="My Schedule"
-				action={<CircleButton icon="add" onPress={() => setClassFormVisible(true)} />}
+				button={<CircleButton icon="add" onPress={() => setClassFormVisible(true)} />}
 			/>
 
 			<View style={styles.filterContainer}>

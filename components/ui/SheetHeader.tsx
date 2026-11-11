@@ -13,17 +13,17 @@ import { Typography } from "../../constants/typography";
 
 type SheetHeaderProps = {
 	title: string;
-	action?: ReactNode;
+	button?: ReactNode;
 	onPress?: () => void;
 };
 
-export default function SheetHeader({ title, action, onPress }: SheetHeaderProps) {
+export default function SheetHeader({ title, button, onPress }: SheetHeaderProps) {
 	return (
 		<Pressable onPress={onPress} disabled={!onPress}>
 			<View style={styles.row}>
 				<Text style={styles.title}>{title}</Text>
-				{action ? <View style={styles.actionSlot} /> : null}
-				{action ? <View style={styles.action}>{action}</View> : null}
+				{button ? <View style={styles.buttonSlot} /> : null}
+				{button ? <View style={styles.button}>{button}</View> : null}
 			</View>
 		</Pressable>
 	);
@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 	},
 
-	actionSlot: {
+	buttonSlot: {
 		width: Sizing.buttonHeight,
 	},
 
-	action: {
+	button: {
 		position: "absolute",
 		right: 0,
 		top: 0,

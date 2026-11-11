@@ -25,7 +25,10 @@ export default function CircleButton({
 
 	return (
 		<Pressable
-			style={[styles.button, { backgroundColor: bgColor, width: size, height: size, borderRadius: size }]}
+			style={[
+				styles.button,
+				{ backgroundColor: bgColor, width: size, height: size, borderRadius: size },
+			]}
 			onPress={onPress}
 			accessibilityRole="button"
 			accessibilityLabel={accessibilityLabel}

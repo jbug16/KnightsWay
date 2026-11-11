@@ -10,7 +10,7 @@ import SheetHeader from "./SheetHeader";
 
 type BottomSheetProps = {
 	title?: string;
-	action?: ReactNode;
+	button?: ReactNode;
 	onHeaderPress?: () => void;
 	onClose?: () => void;
 	children: ReactNode;
@@ -18,12 +18,12 @@ type BottomSheetProps = {
 
 export default function BottomSheet({
 	title,
-	action,
+	button,
 	onHeaderPress,
 	onClose,
 	children,
 }: BottomSheetProps) {
-	const headerAction = action ?? (onClose ? <CloseButton onPress={onClose} /> : null);
+	const headerButton = button ?? (onClose ? <CloseButton onPress={onClose} /> : null);
 
 	return (
 		<View style={styles.container}>
@@ -37,7 +37,7 @@ export default function BottomSheet({
 			<View style={styles.sheet}>
 				{title ? (
 					<>
-						<SheetHeader title={title} action={headerAction} onPress={onHeaderPress} />
+						<SheetHeader title={title} button={headerButton} onPress={onHeaderPress} />
 						<View style={styles.divider} />
 					</>
 				) : null}

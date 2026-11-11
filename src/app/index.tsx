@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Keyboard, ScrollView, StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -9,6 +10,8 @@ import SearchBar from "../../components/ui/SearchBar";
 import { Spacing } from "../../constants/spacing";
 
 export default function Index() {
+	const [isNextClassOpen, setNextClassOpen] = useState(true);
+
 	return (
 		// safe area let's me hide the weird android nav top and not overlap my titles
 		// with the phone information and camera
@@ -35,7 +38,11 @@ export default function Index() {
 			</View>
 
 			<View style={styles.cardContainer}>
-				<NextClassSheet />
+				<NextClassSheet
+					isOpen={isNextClassOpen}
+					onOpen={() => setNextClassOpen(true)}
+					onClose={() => setNextClassOpen(false)}
+				/>
 			</View>
 		</SafeAreaView>
 	);
