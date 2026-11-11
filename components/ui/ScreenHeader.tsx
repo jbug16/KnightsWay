@@ -12,15 +12,15 @@ import { Typography } from "../../constants/typography";
 
 type ScreenHeaderProps = {
 	title: string;
-	action?: ReactNode;
+	button?: ReactNode;
 };
 
-export default function ScreenHeader({ title, action }: ScreenHeaderProps) {
+export default function ScreenHeader({ title, button }: ScreenHeaderProps) {
 	return (
 		<View style={styles.header}>
 			<View style={styles.row}>
 				<Text style={styles.title}>{title}</Text>
-				{action}
+				{button}
 			</View>
 		</View>
 	);

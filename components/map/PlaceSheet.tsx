@@ -11,7 +11,7 @@ import { Sizing } from "../../constants/sizing";
 import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 import BottomSheet from "../ui/BottomSheet";
-import Button from "../ui/Button";
+import Button from "../ui/buttons/Button";
 
 type IoniconName = ComponentProps<typeof Ionicons>["name"];
 

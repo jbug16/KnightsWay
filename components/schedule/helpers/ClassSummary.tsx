@@ -4,12 +4,12 @@
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 
-import { Colors } from "../../constants/colors";
-import { Fonts } from "../../constants/fonts";
-import { Sizing } from "../../constants/sizing";
-import { Spacing } from "../../constants/spacing";
-import { Typography } from "../../constants/typography";
-import Tag from "../ui/Tag";
+import { Colors } from "../../../constants/colors";
+import { Fonts } from "../../../constants/fonts";
+import { Sizing } from "../../../constants/sizing";
+import { Spacing } from "../../../constants/spacing";
+import { Typography } from "../../../constants/typography";
+import Tag from "../../ui/Tag";
 
 type ClassSummaryProps = {
 	showTag?: boolean;

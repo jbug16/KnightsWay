@@ -6,10 +6,10 @@ import { Modal, StyleSheet, View } from "react-native";
 import { Spacing } from "../../constants/spacing";
 import { addClass } from "../../services/classStorage";
 import BottomSheet from "../ui/BottomSheet";
-import Button from "../ui/Button";
+import Button from "../ui/buttons/Button";
 import FormField from "../ui/FormField";
 import TextField from "../ui/TextField";
-import DayChips from "./DayChips";
+import DayChips from "./helpers/DayChips";
 
 type ClassFormProps = {
 	visible: boolean;

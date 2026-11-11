@@ -5,7 +5,7 @@ import { Sizing } from "../../constants/sizing";
 import { Spacing } from "../../constants/spacing";
 
 import { Class } from "../../types/Class";
-import ClassSummary from "./ClassSummary";
+import ClassSummary from "./helpers/ClassSummary";
 
 type ClassRowProps = {
 	item: Class;

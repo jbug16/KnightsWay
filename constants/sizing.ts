@@ -1,5 +1,6 @@
 export const Sizing = {
 	buttonHeight: 40,
+	buttonHeightSmall: 32,
 	inputHeight: 48,
 	iconSmall: 18,
 	iconMed: 24,
