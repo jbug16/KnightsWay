@@ -1,11 +1,9 @@
 // this will define what a class is and what info it stores
 
+import { ClassMeeting } from "./ClassMeeting";
+
 export interface Class {
 	id: number;
 	course_code: string;
-	// building: string;
-	// room: string;
-	// days: number[]; // 0-6 = sunday-saturday
-	// startTime: string; // 24hr time
-	// endTime: string; // 24hr time
+	meetings: ClassMeeting[];
 }

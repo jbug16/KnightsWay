@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Modal, StyleSheet, View } from "react-native";
 
 import { Spacing } from "../../constants/spacing";
+import { useClasses } from "../../contexts/ClassesContext";
 import { addClass } from "../../services/classStorage";
 import BottomSheet from "../ui/BottomSheet";
 import Button from "../ui/buttons/Button";
@@ -16,7 +17,10 @@ type ClassFormProps = {
 	onClose: () => void;
 };
 
+const dayNumber: Record<string, number> = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5 };
+
 export default function ClassForm({ visible, onClose }: ClassFormProps) {
+	const { refreshClasses } = useClasses();
 	const [courseCode, setCourseCode] = useState("");
 	const [building, setBuilding] = useState("");
 	const [room, setRoom] = useState("");
@@ -37,7 +41,18 @@ export default function ClassForm({ visible, onClose }: ClassFormProps) {
 	};
 
 	async function handleAddClass() {
-		await addClass(courseCode);
+		await addClass(
+			courseCode,
+			selectedDays.map((day) => ({
+				day: dayNumber[day],
+				startTime,
+				endTime,
+				building,
+				room,
+			})),
+		);
+		await refreshClasses();
+		handleClose();
 	}
 
 	return (
