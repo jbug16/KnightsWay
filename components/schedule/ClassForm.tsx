@@ -20,6 +20,7 @@ type ClassFormProps = {
 const dayNumber: Record<string, number> = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5 };
 
 export default function ClassForm({ visible, onClose }: ClassFormProps) {
+	// form values
 	const { refreshClasses } = useClasses();
 	const [courseCode, setCourseCode] = useState("");
 	const [building, setBuilding] = useState("");
@@ -40,7 +41,27 @@ export default function ClassForm({ visible, onClose }: ClassFormProps) {
 		onClose();
 	};
 
+	function handleErrors() {
+		if (!/^[0-9]+$/.test(room)) {
+			alert("Room number must be numbers only");
+			return;
+		}
+		if (courseCode.trim() === "") {
+			alert("Course code is required");
+			return;
+		}
+		if (selectedDays.length === 0) {
+			alert("Selecting a day is required");
+			return;
+		}
+		// no building/room number or start/end times is okay because the class might be online
+	}
+
 	async function handleAddClass() {
+		// check for invalid values
+		handleErrors();
+
+		// insert the data to the db
 		await addClass(
 			courseCode,
 			selectedDays.map((day) => ({
@@ -51,7 +72,9 @@ export default function ClassForm({ visible, onClose }: ClassFormProps) {
 				room,
 			})),
 		);
+		// refresh the page
 		await refreshClasses();
+		// close the form
 		handleClose();
 	}
 
