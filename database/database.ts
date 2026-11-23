@@ -11,7 +11,8 @@ export async function initializeDatabase() {
 	await db.execAsync(`
         CREATE TABLE IF NOT EXISTS classes (
             id INTEGER PRIMARY KEY,
-            course_code TEXT NOT NULL
+            course_code TEXT NOT NULL,
+            section TEXT NOT NULL DEFAULT ''
         );
     `);
 

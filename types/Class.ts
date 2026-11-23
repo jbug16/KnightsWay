@@ -5,5 +5,6 @@ import { ClassMeeting } from "./ClassMeeting";
 export interface Class {
 	id: number;
 	course_code: string;
+	section: string;
 	meetings: ClassMeeting[];
 }

@@ -1,7 +1,7 @@
 // a template for a bottom panel
 
-import { ReactNode } from "react";
-import { Pressable, StyleSheet, View } from "react-native";
+import { ReactNode, useEffect, useState } from "react";
+import { Keyboard, Pressable, StyleSheet, View } from "react-native";
 import { Colors } from "../../constants/colors";
 import { Sizing } from "../../constants/sizing";
 import { Spacing } from "../../constants/spacing";
@@ -24,6 +24,21 @@ export default function BottomSheet({
 	children,
 }: BottomSheetProps) {
 	const headerButton = button ?? (onClose ? <CloseButton onPress={onClose} /> : null);
+	// move the sheet up while the keyboard is open
+	const [keyboardHeight, setKeyboardHeight] = useState(0);
+
+	useEffect(() => {
+		const show = Keyboard.addListener("keyboardDidShow", (event) => {
+			setKeyboardHeight(event.endCoordinates.height);
+		});
+		const hide = Keyboard.addListener("keyboardDidHide", () => {
+			setKeyboardHeight(0);
+		});
+		return () => {
+			show.remove();
+			hide.remove();
+		};
+	}, []);
 
 	return (
 		<View style={styles.container}>
@@ -34,7 +49,7 @@ export default function BottomSheet({
 				accessibilityRole="button"
 				accessibilityLabel="Close"
 			/>
-			<View style={styles.sheet}>
+			<View style={[styles.sheet, { bottom: keyboardHeight }]}>
 				{title ? (
 					<>
 						<SheetHeader title={title} button={headerButton} onPress={onHeaderPress} />

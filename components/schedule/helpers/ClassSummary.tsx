@@ -9,14 +9,17 @@ import { Fonts } from "../../../constants/fonts";
 import { Sizing } from "../../../constants/sizing";
 import { Spacing } from "../../../constants/spacing";
 import { Typography } from "../../../constants/typography";
+import { ClassMeeting } from "../../../types/ClassMeeting";
 import Tag from "../../ui/Tag";
+import MeetingLine from "./MeetingLine";
 
 type ClassSummaryProps = {
 	showTag?: boolean;
 	courseCode?: string;
+	meetings?: ClassMeeting[];
 };
 
-export default function ClassSummary({ showTag = true, courseCode }: ClassSummaryProps) {
+export default function ClassSummary({ showTag = true, courseCode, meetings }: ClassSummaryProps) {
 	return (
 		<View style={styles.container}>
 			{/* icon */}
@@ -30,16 +33,26 @@ export default function ClassSummary({ showTag = true, courseCode }: ClassSummar
 					{/* time left til class label */}
 					{showTag ? <Tag text="In 20 mins" /> : null}
 				</View>
-				{/* location */}
-				<View style={styles.label}>
-					<Ionicons name="location-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
-					<Text style={styles.labelText}>CB1, Room 101</Text>
-				</View>
-				{/* time */}
-				<View style={styles.label}>
-					<Ionicons name="time-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
-					<Text style={styles.labelText}>10:30 AM - 11:45 AM</Text>
-				</View>
+				{meetings ? (
+					meetings.map((meeting, index) => <MeetingLine key={index} meeting={meeting} />)
+				) : (
+					<>
+						{/* location */}
+						<View style={styles.label}>
+							<Ionicons
+								name="location-outline"
+								size={Sizing.iconSmall}
+								color={Colors.textSecondary}
+							/>
+							<Text style={styles.labelText}>CB1, Room 101</Text>
+						</View>
+						{/* time */}
+						<View style={styles.label}>
+							<Ionicons name="time-outline" size={Sizing.iconSmall} color={Colors.textSecondary} />
+							<Text style={styles.labelText}>10:30 AM - 11:45 AM</Text>
+						</View>
+					</>
+				)}
 			</View>
 		</View>
 	);

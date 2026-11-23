@@ -6,7 +6,7 @@ import { Class } from "../types/Class";
 import { ClassMeeting } from "../types/ClassMeeting";
 
 // add class
-export async function addClass(courseCode: string, meetings: ClassMeeting[]) {
+export async function addClass(courseCode: string, section: string, meetings: ClassMeeting[]) {
 	// open our database
 	const db = await SQLite.openDatabaseAsync("knightsway.db");
 
@@ -14,7 +14,10 @@ export async function addClass(courseCode: string, meetings: ClassMeeting[]) {
 	// which in this case is insert an item (aka a class) to the "classes" table
 	// add a new row into the table (classes)
 	// fill the column course_code with the data VALUES or just put ? if nothing there
-	const result = await db.runAsync("INSERT INTO classes (course_code) VALUES (?)", [courseCode]);
+	const result = await db.runAsync("INSERT INTO classes (course_code, section) VALUES (?, ?)", [
+		courseCode,
+		section,
+	]);
 	const classId = result.lastInsertRowId;
 
 	// for each meeting...
@@ -35,6 +38,7 @@ export async function addClass(courseCode: string, meetings: ClassMeeting[]) {
 type ClassRow = {
 	id: number;
 	course_code: string;
+	section: string | null;
 	day: number | null;
 	start_time: string | null;
 	end_time: string | null;
@@ -46,6 +50,7 @@ const CLASS_WITH_MEETINGS = `
 	SELECT
 		c.id,
 		c.course_code,
+		c.section,
 		m.day,
 		m.start_time,
 		m.end_time,
@@ -61,7 +66,12 @@ function rowsToClasses(rows: ClassRow[]): Class[] {
 	for (const row of rows) {
 		let current = byId.get(row.id);
 		if (!current) {
-			current = { id: row.id, course_code: row.course_code, meetings: [] };
+			current = {
+				id: row.id,
+				course_code: row.course_code,
+				section: row.section ?? "",
+				meetings: [],
+			};
 			byId.set(row.id, current);
 		}
 		if (row.day != null && row.start_time && row.end_time && row.building_code && row.room_number) {

@@ -1,132 +1,128 @@
 // this is the popup/sheet that comes up to add or edit a class
 
 import { useState } from "react";
-import { Modal, StyleSheet, View } from "react-native";
+import { Modal, ScrollView, StyleSheet, View } from "react-native";
 
 import { Spacing } from "../../constants/spacing";
 import { useClasses } from "../../contexts/ClassesContext";
 import { addClass } from "../../services/classStorage";
+import { CourseSection, findSections } from "../../services/sectionSearch";
 import BottomSheet from "../ui/BottomSheet";
 import Button from "../ui/buttons/Button";
-import FormField from "../ui/FormField";
 import TextField from "../ui/TextField";
-import DayChips from "./helpers/DayChips";
+import SectionRow from "./SectionRow";
 
 type ClassFormProps = {
 	visible: boolean;
 	onClose: () => void;
 };
 
-const dayNumber: Record<string, number> = { Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5 };
-
 export default function ClassForm({ visible, onClose }: ClassFormProps) {
-	// form values
 	const { refreshClasses } = useClasses();
 	const [courseCode, setCourseCode] = useState("");
-	const [building, setBuilding] = useState("");
-	const [room, setRoom] = useState("");
-	const [selectedDays, setSelectedDays] = useState<string[]>([]);
-	const [startTime, setStartTime] = useState("");
-	const [endTime, setEndTime] = useState("");
+	const [sections, setSections] = useState<CourseSection[]>([]);
+	const [picked, setPicked] = useState<CourseSection | null>(null);
+	const [confirming, setConfirming] = useState(false);
 
 	// what happens when we close the modal
 	const handleClose = () => {
 		// reset all values, dont save them
 		setCourseCode("");
-		setBuilding("");
-		setRoom("");
-		setSelectedDays([]);
-		setStartTime("");
-		setEndTime("");
+		setSections([]);
+		setPicked(null);
+		setConfirming(false);
 		onClose();
 	};
 
-	function handleErrors() {
-		if (!/^[0-9]+$/.test(room)) {
-			alert("Room number must be numbers only");
-			return;
-		}
+	function handleFindSections() {
 		if (courseCode.trim() === "") {
 			alert("Course code is required");
 			return;
 		}
-		if (selectedDays.length === 0) {
-			alert("Selecting a day is required");
+
+		const found = findSections(courseCode);
+		if (found.length === 0) {
+			alert("No sections found for this term.");
 			return;
 		}
-		// no building/room number or start/end times is okay because the class might be online
+
+		setSections(found);
+		setPicked(null);
+		setConfirming(false);
 	}
 
 	async function handleAddClass() {
-		// check for invalid values
-		handleErrors();
+		if (picked === null) {
+			return;
+		}
 
 		// insert the data to the db
-		await addClass(
-			courseCode,
-			selectedDays.map((day) => ({
-				day: dayNumber[day],
-				startTime,
-				endTime,
-				building,
-				room,
-			})),
-		);
+		await addClass(picked.courseCode, picked.section, picked.meetings);
 		// refresh the page
 		await refreshClasses();
 		// close the form
 		handleClose();
 	}
 
+	let title = "Add class";
+	if (confirming) {
+		title = "Confirm section";
+	} else if (sections.length > 0) {
+		title = sections[0].courseCode;
+	}
+
 	return (
 		<Modal visible={visible} transparent={true} onRequestClose={handleClose}>
-			<BottomSheet title="Add Class" onClose={handleClose}>
-				<View style={styles.fields}>
-					<TextField
-						label="Course Code"
-						value={courseCode}
-						onChangeText={setCourseCode}
-						placeholder="e.g. COP 1234"
-					/>
-					<View style={styles.row}>
-						<View style={styles.half}>
-							<TextField
-								label="Building"
-								value={building}
-								onChangeText={setBuilding}
-								placeholder="e.g. Engineering I"
-							/>
-						</View>
-						<View style={styles.half}>
-							<TextField label="Room" value={room} onChangeText={setRoom} placeholder="e.g. 104" />
+			<BottomSheet title={title} onClose={handleClose}>
+				{sections.length === 0 ? (
+					<View style={styles.fields}>
+						<TextField
+							label="Course code"
+							value={courseCode}
+							onChangeText={setCourseCode}
+							placeholder="COP 3503"
+						/>
+						<View style={styles.buttonContainer}>
+							<Button variant="primary" label="Find sections" onPress={handleFindSections} />
 						</View>
 					</View>
-					<FormField label="Days">
-						<DayChips selected={selectedDays} onChange={setSelectedDays} />
-					</FormField>
-					<View style={styles.row}>
-						<View style={styles.half}>
-							<TextField
-								label="Start Time"
-								value={startTime}
-								onChangeText={setStartTime}
-								placeholder="9:00 AM"
-							/>
-						</View>
-						<View style={styles.half}>
-							<TextField
-								label="End Time"
-								value={endTime}
-								onChangeText={setEndTime}
-								placeholder="10:15 AM"
+				) : null}
+
+				{sections.length > 0 && !confirming ? (
+					<View style={styles.fields}>
+						<ScrollView style={styles.list} contentContainerStyle={styles.listContent}>
+							{sections.map((section) => (
+								<SectionRow
+									key={section.section}
+									section={section}
+									selected={picked === section}
+									onPress={() => setPicked(section)}
+								/>
+							))}
+						</ScrollView>
+						<View style={styles.buttonContainer}>
+							<Button
+								variant={picked === null ? "secondary" : "primary"}
+								label="Review section"
+								onPress={() => {
+									if (picked !== null) {
+										setConfirming(true);
+									}
+								}}
 							/>
 						</View>
 					</View>
-				</View>
-				{/* buttons */}
-				<View style={styles.buttonContainer}>
-					<Button variant="primary" label="Add Class" onPress={handleAddClass} />
-				</View>
+				) : null}
+
+				{confirming && picked !== null ? (
+					<View style={styles.fields}>
+						<SectionRow section={picked} selected={true} />
+						<View style={styles.buttonContainer}>
+							<Button variant="secondary" label="Back" onPress={() => setConfirming(false)} />
+							<Button variant="primary" label="Add class" onPress={handleAddClass} />
+						</View>
+					</View>
+				) : null}
 			</BottomSheet>
 		</Modal>
 	);
@@ -137,13 +133,12 @@ const styles = StyleSheet.create({
 		gap: Spacing.lg,
 	},
 
-	row: {
-		flexDirection: "row",
-		gap: Spacing.md,
+	list: {
+		maxHeight: 320,
 	},
 
-	half: {
-		flex: 1,
+	listContent: {
+		gap: Spacing.md,
 	},
 
 	buttonContainer: {
