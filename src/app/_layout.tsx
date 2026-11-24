@@ -80,7 +80,13 @@ export default function RootLayout() {
 					name="index"
 					options={{
 						title: "Home",
-						tabBarIcon: ({ color, size }) => <Ionicons name="home" size={size} color={color} />,
+						tabBarIcon: ({ color, size }) => (
+							<Ionicons
+								name="home"
+								size={size}
+								color={typeof color === "string" ? color : Colors.black}
+							/>
+						),
 					}}
 				/>
 				{/* Schedule screen */}
@@ -88,7 +94,13 @@ export default function RootLayout() {
 					name="schedule"
 					options={{
 						title: "Schedule",
-						tabBarIcon: ({ color, size }) => <Ionicons name="calendar" size={size} color={color} />,
+						tabBarIcon: ({ color, size }) => (
+							<Ionicons
+								name="calendar"
+								size={size}
+								color={typeof color === "string" ? color : Colors.black}
+							/>
+						),
 					}}
 				/>
 				{/* Parking screen */}
@@ -96,7 +108,13 @@ export default function RootLayout() {
 					name="parking"
 					options={{
 						title: "Parking",
-						tabBarIcon: ({ color, size }) => <Ionicons name="car" size={size} color={color} />,
+						tabBarIcon: ({ color, size }) => (
+							<Ionicons
+								name="car"
+								size={size}
+								color={typeof color === "string" ? color : Colors.black}
+							/>
+						),
 					}}
 				/>
 				{/* Settings screen */}
@@ -104,7 +122,13 @@ export default function RootLayout() {
 					name="settings"
 					options={{
 						title: "Settings",
-						tabBarIcon: ({ color, size }) => <Ionicons name="settings" size={size} color={color} />,
+						tabBarIcon: ({ color, size }) => (
+							<Ionicons
+								name="settings"
+								size={size}
+								color={typeof color === "string" ? color : Colors.black}
+							/>
+						),
 					}}
 				/>
 			</Tabs>

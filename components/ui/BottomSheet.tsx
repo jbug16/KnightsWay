@@ -1,7 +1,7 @@
 // a template for a bottom panel
 
 import { ReactNode, useEffect, useState } from "react";
-import { Keyboard, Pressable, StyleSheet, View } from "react-native";
+import { Keyboard, Platform, Pressable, StyleSheet, View } from "react-native";
 import { Colors } from "../../constants/colors";
 import { Sizing } from "../../constants/sizing";
 import { Spacing } from "../../constants/spacing";
@@ -29,7 +29,8 @@ export default function BottomSheet({
 
 	useEffect(() => {
 		const show = Keyboard.addListener("keyboardDidShow", (event) => {
-			setKeyboardHeight(event.endCoordinates.height);
+			const nextHeight = Platform.OS === "ios" ? event.endCoordinates.height : 0;
+			setKeyboardHeight(nextHeight);
 		});
 		const hide = Keyboard.addListener("keyboardDidHide", () => {
 			setKeyboardHeight(0);
