@@ -2,13 +2,157 @@
   {
     "code": "CB1",
     "name": "Classroom Building I",
-    "latitude": 0.0,
-    "longitude": 0.0
+    "latitude": 28.603491,
+    "longitude": -81.20042
   },
   {
     "code": "CB2",
     "name": "Classroom Building II",
-    "latitude": 0.0,
-    "longitude": 0.0
+    "latitude": 28.604306,
+    "longitude": -81.200111
+  },
+  {
+    "code": "BA1",
+    "name": "Business Administration I",
+    "latitude": 28.601003,
+    "longitude": -81.199111
+  },
+  {
+    "code": "BA2",
+    "name": "Business Administration II",
+    "latitude": 28.600798,
+    "longitude": -81.198655
+  },
+  {
+    "code": "CAH",
+    "name": "College of Arts & Humanities",
+    "latitude": 28.604436,
+    "longitude": -81.202547
+  },
+  {
+    "code": "CSB",
+    "name": "College of Sciences",
+    "latitude": 28.60098,
+    "longitude": -81.200104
+  },
+  {
+    "code": "ENG1",
+    "name": "Engineering I",
+    "latitude": 28.601512,
+    "longitude": -81.198392
+  },
+  {
+    "code": "ENG2",
+    "name": "Engineering II",
+    "latitude": 28.601823,
+    "longitude": -81.198292
+  },
+  {
+    "code": "HC",
+    "name": "Health Center & Pharmacy",
+    "latitude": 28.599422,
+    "longitude": -81.199366
+  },
+  {
+    "code": "HEC",
+    "name": "L3Harris Engineering Center",
+    "latitude": 28.600525,
+    "longitude": -81.197687
+  },
+  {
+    "code": "HPH",
+    "name": "Howard Phillips Hall",
+    "latitude": 28.600281,
+    "longitude": -81.202724
+  },
+  {
+    "code": "LIB",
+    "name": "John C. Hitt Library",
+    "latitude": 28.600594,
+    "longitude": -81.201268
+  },
+  {
+    "code": "MH",
+    "name": "Millican Hall",
+    "latitude": 28.599105,
+    "longitude": -81.20228
+  },
+  {
+    "code": "MSB",
+    "name": "Mathematical Sciences Building",
+    "latitude": 28.59959,
+    "longitude": -81.200532
+  },
+  {
+    "code": "PAC",
+    "name": "Performing Arts Center",
+    "latitude": 28.602104,
+    "longitude": -81.204456
+  },
+  {
+    "code": "RWC",
+    "name": "Recreation and Wellness Center",
+    "latitude": 28.595543,
+    "longitude": -81.199571
+  },
+  {
+    "code": "STUN",
+    "name": "Student Union",
+    "latitude": 28.602035,
+    "longitude": -81.200544
+  },
+  {
+    "code": "TC1",
+    "name": "Technology Commons I",
+    "latitude": 28.60034,
+    "longitude": -81.200379
+  },
+  {
+    "code": "TC2",
+    "name": "Technology Commons II",
+    "latitude": 28.600568,
+    "longitude": -81.20035
+  },
+  {
+    "code": "PGA",
+    "name": "Parking Garage A",
+    "latitude": 28.599869,
+    "longitude": -81.205641
+  },
+  {
+    "code": "PGB",
+    "name": "Parking Garage B",
+    "latitude": 28.596908,
+    "longitude": -81.2004
+  },
+  {
+    "code": "PGC",
+    "name": "Parking Garage C",
+    "latitude": 28.602338,
+    "longitude": -81.195747
+  },
+  {
+    "code": "PGD",
+    "name": "Parking Garage D",
+    "latitude": 28.604928,
+    "longitude": -81.197142
+  },
+  {
+    "code": "PGH",
+    "name": "Parking Garage H",
+    "latitude": 28.604958,
+    "longitude": -81.201124
+  },
+  {
+    "code": "PGI",
+    "name": "Parking Garage I",
+    "latitude": 28.601132,
+    "longitude": -81.204807
+  },
+  {
+    "code": "LIBRA",
+    "name": "Libra Garage",
+    "latitude": 28.596003,
+    "longitude": -81.196704
   }
 ]
