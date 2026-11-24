@@ -34,7 +34,7 @@ export default function ClassSummary({ showTag = true, courseCode, meetings }: C
 					{showTag ? <Tag text="In 20 mins" /> : null}
 				</View>
 				{meetings ? (
-					meetings.map((meeting, index) => <MeetingLine key={index} meeting={meeting} />)
+					<MeetingLine meetings={meetings} />
 				) : (
 					<>
 						{/* location */}

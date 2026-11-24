@@ -19,10 +19,7 @@ export default function SectionRow({ section, selected = false, onPress }: Secti
 	return (
 		<Pressable onPress={onPress} style={[styles.card, selected && styles.selected]}>
 			<Text style={styles.name}>Section {section.section}</Text>
-			<Text style={styles.title}>{section.title}</Text>
-			{section.meetings.map((meeting, index) => (
-				<MeetingLine key={index} meeting={meeting} />
-			))}
+			<MeetingLine meetings={section.meetings} />
 		</Pressable>
 	);
 }
@@ -46,11 +43,5 @@ const styles = StyleSheet.create({
 		fontFamily: Fonts.semibold,
 		fontSize: Typography.body,
 		color: Colors.text,
-	},
-
-	title: {
-		fontFamily: Fonts.regular,
-		fontSize: Typography.secondary,
-		color: Colors.textSecondary,
 	},
 });
