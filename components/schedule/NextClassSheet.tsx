@@ -29,7 +29,7 @@ function findNextMeeting(classes: Class[], now: Date) {
 	let next: { courseCode: string; meeting: ClassMeeting } | null = null;
 
 	for (const item of classes) {
-		for (const meeting of item.meetings) {
+		for (const meeting of item.meetings ?? []) {
 			if (meeting.day !== today || minutes(meeting.endTime) <= nowMinutes) {
 				continue;
 			}

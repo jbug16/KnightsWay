@@ -32,7 +32,7 @@ export default function ScheduleScreen() {
 		selectedDayNumbers.length === 0
 			? classes
 			: classes.filter((item) =>
-					item.meetings.some((meeting) => selectedDayNumbers.includes(meeting.day)),
+					(item.meetings ?? []).some((meeting) => selectedDayNumbers.includes(meeting.day)),
 				);
 
 	return (
