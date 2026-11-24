@@ -143,7 +143,7 @@ export default function PlaceSheet({ variant = "class-building" }: PlaceSheetPro
 	const place = places[variant];
 
 	return (
-		<BottomSheet showHandle>
+		<BottomSheet>
 			<View style={styles.header}>
 				{place.iconTile ? (
 					<IconTile name={place.icon} large />
