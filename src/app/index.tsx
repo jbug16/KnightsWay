@@ -11,13 +11,14 @@ import Chip from "../../components/ui/Chip";
 import SearchBar from "../../components/ui/SearchBar";
 import { Colors } from "../../constants/colors";
 import { Spacing } from "../../constants/spacing";
-import { findPlaces } from "../../services/placeSearch";
+import { findPlaces, Place } from "../../services/placeSearch";
 
 export default function Index() {
 	const navigation = useNavigation();
 	const [isNextClassOpen, setNextClassOpen] = useState(true);
 	const [query, setQuery] = useState("");
 	const [isSearchOpen, setSearchOpen] = useState(false);
+	const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
 	const places = findPlaces(query);
 
 	// the x clears the text and brings the map back
@@ -25,6 +26,12 @@ export default function Index() {
 		setQuery("");
 		setSearchOpen(false);
 		Keyboard.dismiss();
+	}
+
+	// remember the row the user tapped then close the search
+	function choosePlace(place: Place) {
+		setSelectedPlace(place);
+		clearSearch();
 	}
 
 	// hide the bottom tabs while a search is on screen
@@ -64,7 +71,7 @@ export default function Index() {
 				query.trim() === "" ? (
 					<View style={styles.searchScreen} />
 				) : (
-					<SearchResults places={places} />
+					<SearchResults places={places} onPress={choosePlace} />
 				)
 			) : (
 				<>
@@ -82,7 +89,7 @@ export default function Index() {
 					</ScrollView>
 
 					<View style={styles.mapContainer}>
-						<CampusMap />
+						<CampusMap selectedPlace={selectedPlace} />
 					</View>
 
 					<View style={styles.cardContainer}>

@@ -12,6 +12,7 @@ import { Place } from "../../services/placeSearch";
 
 type SearchResultsProps = {
 	places: Place[];
+	onPress: (place: Place) => void;
 };
 
 // parking names include "garage" or "lot"
@@ -23,7 +24,7 @@ function placeLabel(place: Place) {
 	return "Building";
 }
 
-export default function SearchResults({ places }: SearchResultsProps) {
+export default function SearchResults({ places, onPress }: SearchResultsProps) {
 	if (places.length === 0) {
 		return (
 			<View style={styles.emptyWrap}>
@@ -41,7 +42,7 @@ export default function SearchResults({ places }: SearchResultsProps) {
 			{places.map((place) => {
 				const label = placeLabel(place);
 				return (
-					<Pressable key={place.code} style={styles.card}>
+					<Pressable key={place.code} style={styles.card} onPress={() => onPress(place)}>
 						<Ionicons
 							name={label === "Parking" ? "car-outline" : "business-outline"}
 							size={Sizing.iconMed}
