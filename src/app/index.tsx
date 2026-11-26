@@ -93,7 +93,7 @@ export default function Index() {
 					<View style={styles.mapContainer}>
 						<CampusMap selectedPlace={selectedPlace} />
 						{selectedPlace ? (
-							<View style={styles.placeOverlay}>
+							<View style={styles.placeOverlay} pointerEvents="box-none">
 								<PlaceSheet code={selectedPlace.code} onClose={() => setSelectedPlace(null)} />
 							</View>
 						) : null}

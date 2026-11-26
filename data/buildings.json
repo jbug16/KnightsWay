@@ -3,156 +3,201 @@
     "code": "CB1",
     "name": "Classroom Building I",
     "latitude": 28.603491,
-    "longitude": -81.20042
+    "longitude": -81.20042,
+    "type": "Classroom",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "CB2",
     "name": "Classroom Building II",
     "latitude": 28.604306,
-    "longitude": -81.200111
+    "longitude": -81.200111,
+    "type": "Classroom",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "BA1",
     "name": "Business Administration I",
     "latitude": 28.601003,
-    "longitude": -81.199111
+    "longitude": -81.199111,
+    "type": "Business",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "BA2",
     "name": "Business Administration II",
     "latitude": 28.600798,
-    "longitude": -81.198655
+    "longitude": -81.198655,
+    "type": "Business",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "CAH",
     "name": "College of Arts & Humanities",
     "latitude": 28.604436,
-    "longitude": -81.202547
+    "longitude": -81.202547,
+    "type": "Arts and Humanities",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "CSB",
     "name": "College of Sciences",
     "latitude": 28.60098,
-    "longitude": -81.200104
+    "longitude": -81.200104,
+    "type": "Sciences",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "ENG1",
     "name": "Engineering I",
     "latitude": 28.601512,
-    "longitude": -81.198392
+    "longitude": -81.198392,
+    "type": "Engineering",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "ENG2",
     "name": "Engineering II",
     "latitude": 28.601823,
-    "longitude": -81.198292
+    "longitude": -81.198292,
+    "type": "Engineering",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "HC",
     "name": "Health Center & Pharmacy",
     "latitude": 28.599422,
-    "longitude": -81.199366
+    "longitude": -81.199366,
+    "type": "Health Center",
+    "hours": "8:00 AM - 5:00 PM"
   },
   {
     "code": "HEC",
     "name": "L3Harris Engineering Center",
     "latitude": 28.600525,
-    "longitude": -81.197687
+    "longitude": -81.197687,
+    "type": "Engineering",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "HPH",
     "name": "Howard Phillips Hall",
     "latitude": 28.600281,
-    "longitude": -81.202724
+    "longitude": -81.202724,
+    "type": "Academic",
+    "hours": "8:00 AM - 5:00 PM"
   },
   {
     "code": "LIB",
     "name": "John C. Hitt Library",
     "latitude": 28.600594,
-    "longitude": -81.201268
+    "longitude": -81.201268,
+    "type": "Library",
+    "hours": "7:30 AM - 1:00 AM"
   },
   {
     "code": "MH",
     "name": "Millican Hall",
     "latitude": 28.599105,
-    "longitude": -81.20228
+    "longitude": -81.20228,
+    "type": "Administration",
+    "hours": "8:00 AM - 5:00 PM"
   },
   {
     "code": "MSB",
     "name": "Mathematical Sciences Building",
     "latitude": 28.59959,
-    "longitude": -81.200532
+    "longitude": -81.200532,
+    "type": "Math",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "PAC",
     "name": "Performing Arts Center",
     "latitude": 28.602104,
-    "longitude": -81.204456
+    "longitude": -81.204456,
+    "type": "Arts",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "RWC",
     "name": "Recreation and Wellness Center",
     "latitude": 28.595543,
-    "longitude": -81.199571
+    "longitude": -81.199571,
+    "type": "Recreation",
+    "hours": "6:00 AM - 12:00 AM"
   },
   {
     "code": "STUN",
     "name": "Student Union",
     "latitude": 28.602035,
-    "longitude": -81.200544
+    "longitude": -81.200544,
+    "type": "Student Union",
+    "hours": "7:00 AM - 12:00 AM"
   },
   {
     "code": "TC1",
     "name": "Technology Commons I",
     "latitude": 28.60034,
-    "longitude": -81.200379
+    "longitude": -81.200379,
+    "type": "Computer Lab",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "TC2",
     "name": "Technology Commons II",
     "latitude": 28.600568,
-    "longitude": -81.20035
+    "longitude": -81.20035,
+    "type": "Computer Lab",
+    "hours": "7:00 AM - 10:00 PM"
   },
   {
     "code": "PGA",
     "name": "Parking Garage A",
     "latitude": 28.599869,
-    "longitude": -81.205641
+    "longitude": -81.205641,
+    "permit": "Commuter"
   },
   {
     "code": "PGB",
     "name": "Parking Garage B",
     "latitude": 28.596908,
-    "longitude": -81.2004
+    "longitude": -81.2004,
+    "permit": "Commuter"
   },
   {
     "code": "PGC",
     "name": "Parking Garage C",
     "latitude": 28.602338,
-    "longitude": -81.195747
+    "longitude": -81.195747,
+    "permit": "Commuter"
   },
   {
     "code": "PGD",
     "name": "Parking Garage D",
     "latitude": 28.604928,
-    "longitude": -81.197142
+    "longitude": -81.197142,
+    "permit": "Commuter"
   },
   {
     "code": "PGH",
     "name": "Parking Garage H",
     "latitude": 28.604958,
-    "longitude": -81.201124
+    "longitude": -81.201124,
+    "permit": "Commuter"
   },
   {
     "code": "PGI",
     "name": "Parking Garage I",
     "latitude": 28.601132,
-    "longitude": -81.204807
+    "longitude": -81.204807,
+    "permit": "Commuter"
   },
   {
     "code": "LIBRA",
     "name": "Libra Garage",
     "latitude": 28.596003,
-    "longitude": -81.196704
+    "longitude": -81.196704,
+    "permit": "Housing"
   }
 ]

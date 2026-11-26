@@ -7,6 +7,9 @@ export type Place = {
 	name: string;
 	latitude: number;
 	longitude: number;
+	type?: string;
+	hours?: string;
+	permit?: string;
 };
 
 // "garage b" and "GARAGE B" should match "Parking Garage B"
