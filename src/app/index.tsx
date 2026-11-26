@@ -5,6 +5,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 // My custom components
 import CampusMap from "../../components/map/CampusMap";
+import PlaceSheet from "../../components/map/PlaceSheet";
 import SearchResults from "../../components/map/SearchResults";
 import NextClassSheet from "../../components/schedule/NextClassSheet";
 import Chip from "../../components/ui/Chip";
@@ -90,15 +91,22 @@ export default function Index() {
 
 					<View style={styles.mapContainer}>
 						<CampusMap selectedPlace={selectedPlace} />
+						{selectedPlace ? (
+							<View style={styles.placeOverlay}>
+								<PlaceSheet name={selectedPlace.name} onClose={() => setSelectedPlace(null)} />
+							</View>
+						) : null}
 					</View>
 
-					<View style={styles.cardContainer}>
-						<NextClassSheet
-							isOpen={isNextClassOpen}
-							onOpen={() => setNextClassOpen(true)}
-							onClose={() => setNextClassOpen(false)}
-						/>
-					</View>
+					{selectedPlace ? null : (
+						<View style={styles.cardContainer}>
+							<NextClassSheet
+								isOpen={isNextClassOpen}
+								onOpen={() => setNextClassOpen(true)}
+								onClose={() => setNextClassOpen(false)}
+							/>
+						</View>
+					)}
 				</>
 			)}
 		</SafeAreaView>
@@ -116,6 +124,14 @@ const styles = StyleSheet.create({
 
 	mapContainer: {
 		flex: 1,
+	},
+
+	placeOverlay: {
+		position: "absolute",
+		top: 0,
+		right: 0,
+		bottom: 0,
+		left: 0,
 	},
 
 	searchScreen: {

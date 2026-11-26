@@ -12,6 +12,7 @@ import { Spacing } from "../../constants/spacing";
 import { Typography } from "../../constants/typography";
 import BottomSheet from "../ui/BottomSheet";
 import Button from "../ui/buttons/Button";
+import CloseButton from "../ui/buttons/CloseButton";
 
 type IoniconName = ComponentProps<typeof Ionicons>["name"];
 
@@ -40,8 +41,18 @@ type PlaceContent = {
 };
 
 type PlaceSheetProps = {
-	variant?: PlaceVariant;
+	name: string;
+	onClose: () => void;
 };
+
+// parking names include "garage" or "lot"
+function placeKind(name: string): PlaceVariant {
+	const label = name.toLowerCase();
+	if (label.includes("garage") || label.includes("lot")) {
+		return "parking";
+	}
+	return "building";
+}
 
 const places: Record<PlaceVariant, PlaceContent> = {
 	"class-building": {
@@ -139,18 +150,19 @@ function ClassList({ classes }: { classes: ClassSession[] }) {
 	);
 }
 
-export default function PlaceSheet({ variant = "class-building" }: PlaceSheetProps) {
-	const place = places[variant];
+export default function PlaceSheet({ name, onClose }: PlaceSheetProps) {
+	const place = places[placeKind(name)];
 
 	return (
-		<BottomSheet>
+		<BottomSheet onClose={onClose}>
 			<View style={styles.header}>
 				{place.iconTile ? (
 					<IconTile name={place.icon} large />
 				) : (
 					<Ionicons name={place.icon} size={Typography.screenTitle} color={Colors.black} />
 				)}
-				<Text style={styles.title}>{place.name}</Text>
+				<Text style={styles.title}>{name}</Text>
+				<CloseButton onPress={onClose} />
 			</View>
 
 			{place.details ? <DetailRows rows={place.details} /> : null}
