@@ -13,6 +13,7 @@ type BottomSheetProps = {
 	button?: ReactNode;
 	onHeaderPress?: () => void;
 	onClose?: () => void;
+	backdrop?: boolean;
 	children: ReactNode;
 };
 
@@ -21,6 +22,7 @@ export default function BottomSheet({
 	button,
 	onHeaderPress,
 	onClose,
+	backdrop = true,
 	children,
 }: BottomSheetProps) {
 	const headerButton = button ?? (onClose ? <CloseButton onPress={onClose} /> : null);
@@ -42,14 +44,16 @@ export default function BottomSheet({
 	}, []);
 
 	return (
-		<View style={styles.container}>
-			<Pressable
-				style={styles.backdrop}
-				onPress={onClose}
-				disabled={!onClose}
-				accessibilityRole="button"
-				accessibilityLabel="Close"
-			/>
+		<View style={styles.container} pointerEvents={backdrop ? "auto" : "box-none"}>
+			{backdrop ? (
+				<Pressable
+					style={styles.backdrop}
+					onPress={onClose}
+					disabled={!onClose}
+					accessibilityRole="button"
+					accessibilityLabel="Close"
+				/>
+			) : null}
 			<View style={[styles.sheet, { bottom: keyboardHeight }]}>
 				{title ? (
 					<>

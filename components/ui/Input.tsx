@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { ComponentProps } from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
 
 import { Colors } from "../../constants/colors";
 import { Fonts } from "../../constants/fonts";
@@ -11,11 +11,20 @@ import { Typography } from "../../constants/typography";
 type InputProps = {
 	value?: string;
 	onChangeText?: (value: string) => void;
+	onFocus?: () => void;
+	onClear?: () => void;
 	placeholder?: string;
 	icon?: ComponentProps<typeof Ionicons>["name"];
 };
 
-export default function Input({ value, onChangeText, placeholder, icon }: InputProps) {
+export default function Input({
+	value,
+	onChangeText,
+	onFocus,
+	onClear,
+	placeholder,
+	icon,
+}: InputProps) {
 	return (
 		<View style={styles.container}>
 			{icon ? <Ionicons name={icon} size={Sizing.iconMed} color={Colors.textSecondary} /> : null}
@@ -23,11 +32,17 @@ export default function Input({ value, onChangeText, placeholder, icon }: InputP
 				style={styles.input}
 				value={value}
 				onChangeText={onChangeText}
+				onFocus={onFocus}
 				placeholder={placeholder}
 				placeholderTextColor={Colors.textSecondary}
 				autoCorrect={false}
 				autoCapitalize="none"
 			/>
+			{onClear ? (
+				<Pressable onPress={onClear} accessibilityRole="button" accessibilityLabel="Clear search">
+					<Ionicons name="close" size={Sizing.iconMed} color={Colors.textSecondary} />
+				</Pressable>
+			) : null}
 		</View>
 	);
 }
