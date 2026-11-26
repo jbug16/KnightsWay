@@ -21,6 +21,7 @@ export default function Index() {
 	const [isSearchOpen, setSearchOpen] = useState(false);
 	const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
 	const places = findPlaces(query);
+	const hideTabs = isSearchOpen || selectedPlace !== null;
 
 	// the x clears the text and brings the map back
 	function clearSearch() {
@@ -35,9 +36,9 @@ export default function Index() {
 		clearSearch();
 	}
 
-	// hide the bottom tabs while a search is on screen
+	// hide the bottom tabs while search or a place sheet is open
 	useEffect(() => {
-		if (!isSearchOpen) {
+		if (!hideTabs) {
 			return;
 		}
 
@@ -53,12 +54,12 @@ export default function Index() {
 				},
 			});
 		};
-	}, [isSearchOpen, navigation]);
+	}, [hideTabs, navigation]);
 
 	return (
 		// safe area let's me hide the weird android nav top and not overlap my titles
 		// with the phone information and camera
-		<SafeAreaView style={styles.container} edges={isSearchOpen ? ["top", "bottom"] : ["top"]}>
+		<SafeAreaView style={styles.container} edges={hideTabs ? ["top", "bottom"] : ["top"]}>
 			<View style={styles.header}>
 				<SearchBar
 					value={query}
@@ -93,7 +94,7 @@ export default function Index() {
 						<CampusMap selectedPlace={selectedPlace} />
 						{selectedPlace ? (
 							<View style={styles.placeOverlay}>
-								<PlaceSheet name={selectedPlace.name} onClose={() => setSelectedPlace(null)} />
+								<PlaceSheet code={selectedPlace.code} onClose={() => setSelectedPlace(null)} />
 							</View>
 						) : null}
 					</View>
